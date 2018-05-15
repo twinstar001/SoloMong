@@ -6,5 +6,10 @@
 	<bean	id="testControler"
 			class="com.solomong.www.testController">
 	</bean>
+	
+	<bean	id="MemberController"
+			class="com.solomong.www.member.controller.MemberController">
+			
+	</bean>
 
 </beans>
