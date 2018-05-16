@@ -11,5 +11,11 @@
 			class="com.solomong.www.member.controller.MemberController">
 			
 	</bean>
+	
+	<bean	id="RecipeController"
+			class="com.solomong.www.recipe.web.RecipeController">
+			<property name="recipeService" ref="recipeService" />
+	</bean>
+	
 
 </beans>

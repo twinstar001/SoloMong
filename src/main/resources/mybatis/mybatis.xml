@@ -5,5 +5,8 @@
 
 <configuration>
 
+	<mappers>
+		<mapper resource="com/solomong/www/recipe/dao/sql/ingredient.xml"/>
+	</mappers>
 
 </configuration>
