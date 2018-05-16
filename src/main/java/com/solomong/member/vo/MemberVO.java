@@ -1,4 +1,4 @@
-package com.solomong.www.member.vo;
+package com.solomong.member.vo;
 
 public class MemberVO {
 

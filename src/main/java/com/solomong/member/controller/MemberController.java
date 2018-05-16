@@ -1,10 +1,10 @@
-package com.solomong.www.member.controller;
+package com.solomong.member.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.solomong.www.member.vo.MemberVO;
+import com.solomong.member.vo.MemberVO;
 
 @Controller
 public class MemberController {

@@ -1,4 +1,4 @@
-package com.solomong.www;
+package com.solomong;
 
 
 import org.springframework.stereotype.Controller;
