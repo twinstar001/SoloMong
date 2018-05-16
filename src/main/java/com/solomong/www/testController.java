@@ -12,9 +12,13 @@ public class testController {
 		return "main";
 	}
 	
-	@RequestMapping("/recipe") 
+	@RequestMapping("/list") 
 		public String recipe() {
-			return "recipe";
+			return "recipe/list";
 		}
+	@RequestMapping("/detail") 
+	public String recipeDetail() {
+		return "recipe/detail";
+	}
 	
 }
