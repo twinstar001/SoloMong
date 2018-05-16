@@ -111,7 +111,7 @@
 <div id="remocon_main">
 	<div class="remocon">
 		<ul>
-			<li><div style="text-align:center"><img src="/static/img/elements/solo.PNG" width="20px" height="20px" alt="home"/></div></li>
+			<li><div style="text-align:center"><img src="static/main/img/solo.PNG" width="20px" height="20px" alt="home"/></div></li>
 			<li><div>만개 레시피</div></li>
 			<li><div>나만의 레시피</div></li>
 			<li><div>나만의 꿀팁</div></li>
