@@ -26,7 +26,7 @@
 	
 <body>
 	<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
-	<script src="static/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- 	<script src="static/js/vendor/jquery-2.2.4.min.js"></script> -->
 	<script src="static/js/vendor/bootstrap.min.js"></script>			
 	<script src="static/js/easing.min.js"></script>			
 	<script src="static/js/hoverIntent.js"></script>
@@ -44,7 +44,7 @@
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/logo.png" alt="" title="" /></a>
+				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
