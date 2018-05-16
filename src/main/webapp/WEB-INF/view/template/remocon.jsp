@@ -7,15 +7,17 @@
 	$().ready(function(){
 		var scrollTop= $(this).scrollTop();
 		<%//리모컨 초기 위치%>
+		remocon_set();
 		function remocon_set(){
-			if(scrollTop < 700){
-				document.getElementById('remocon_main').style.top = '500px';
-			}else{
-				document.getElementById('remocon_main').style.top = '80px';
+			if( (location.href.indexOf('main') > -1) ){
+				if(scrollTop < 700){
+					document.getElementById('remocon_main').style.top = '500px';
+				}else{
+					document.getElementById('remocon_main').style.top = '80px';
+				}
 			}
 		}
 		
-		remocon_set();
 		
 		<%//url에 'login'가 포함되 있으면 리모컨 레시피 부분 보이기.%>
 	    if(location.href.indexOf('login') > -1){ 
@@ -44,7 +46,7 @@
 			}
 			<%//'만개 레시피' 클릭시%>
 			else if(navEvent == "만개 레시피"){
-				$("#rightBody").load("<c:url value="/SoloMong/test"/>");
+				$("#rightBody").load("<c:url value="/SoloMong/main"/>");
 			}
 			else if(navEvent == "커뮤니티"){
 				/* $("#rightBody").load("<c:url value="/rightbody"/>"); */
@@ -64,7 +66,7 @@
 		opacity: 0.7;
 		z-index: 100;
 		position: fixed;
-		top:500px;
+		top:80px;
 		right:10px;
 	}
 	.remocon ul {	
