@@ -11,7 +11,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/loginRegist" , method= RequestMethod.GET)
 	public String viewLoginRegistPage() {
-		return "member/loginAndRegist";
+		return "/loginTest";
 	}
 	
 	@RequestMapping(value="loginRegist", method=RequestMethod.POST)
