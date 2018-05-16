@@ -11,5 +11,10 @@ public class testController {
 	public String viewTest() {
 		return "main";
 	}
-
+	
+	@RequestMapping("/recipe") 
+		public String recipe() {
+			return "recipe";
+		}
+	
 }
