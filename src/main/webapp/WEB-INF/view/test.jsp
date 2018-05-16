@@ -39,11 +39,14 @@
 		</head>
 		<body>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	
+	
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 		crossorigin="anonymous"></script>
-
+	<jsp:include page="/WEB-INF/view/template/remocon.jsp" />				
+				
 			  <header id="header" id="home">
 			    <div class="container">
 			    	<div class="row align-items-center justify-content-between d-flex">
