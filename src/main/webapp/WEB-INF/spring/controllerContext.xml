@@ -11,5 +11,10 @@
 			class="com.solomong.member.controller.MemberController">
 			
 	</bean>
+	
+	<bean	id="RefigeratorController"
+			class="com.solomong.refrigerator.controller.RefrigeratorController">
+			
+	</bean>
 
 </beans>
