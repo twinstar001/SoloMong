@@ -20,6 +20,7 @@
 
 <body>
 <header>
+<jsp:include page="/WEB-INF/view/template/topBar.jsp"/>
 	<div style="background-color:red; height:100px;">상단바 부분</div>  <!-- 상단바 위치/ include 시키기 -->
 </header>
 	<div style="width:1100px; margin-left:130px; " >
@@ -103,7 +104,43 @@
 							<div style="width:80px; display:inline-block;">
 								<img style="width:80px; height:80px; " alt="" src="//item.ssgcdn.com/34/88/61/item/0000006618834_i1_180.jpg">
 							</div><!-- 
-							 --><div style="width:195px;  display:inline-block;">
+							 --><div style="width:195px; vertical-align:top; margin-left: 14px; display:inline-block;">
+							 	<div style="width:195px; font-size:13px; ">
+										CJ
+							 	</div> 
+							 	<div style="width:195px; font-size:13px;">
+									<a href="/item/itemView.ssg?itemId=0000006618834&siteNo=6001&salestrNo=2034">
+										[백설]  진한 참기름 500ml
+									</a>
+							 	</div>
+							 	<div style="width:195px; ">
+										<span style="font-size:18px;">5,380</span>
+										<span style="font-size:11px;">원</span>
+							 	</div> 	
+							</div>
+						</div> 
+					</div>
+				</div>
+				
+				<div style="width:309px;">
+					<div style="width:309px;">
+						<div style="width:289px; padding-top:20px; padding-bottom:20px; padding-left:10px; padding-right:10px">
+							<div style="width:80px; display:inline-block;">
+								<img style="width:80px; height:80px; " alt="" src="//item.ssgcdn.com/34/88/61/item/0000006618834_i1_180.jpg">
+							</div><!-- 
+							 --><div style="width:195px; vertical-align:top; margin-left: 14px; display:inline-block;">
+							 	<div style="width:195px; font-size:13px; ">
+										CJ
+							 	</div> 
+							 	<div style="width:195px; font-size:13px;">
+									<a href="/item/itemView.ssg?itemId=0000006618834&siteNo=6001&salestrNo=2034">
+										[백설]  진한 참기름 500ml
+									</a>
+							 	</div>
+							 	<div style="width:195px; ">
+										<span style="font-size:18px;">5,380</span>
+										<span style="font-size:11px;">원</span>
+							 	</div> 	
 							</div>
 						</div> 
 					</div>
@@ -113,4 +150,4 @@
 	</div>
 
 </body>
-</html>
+</html>	
