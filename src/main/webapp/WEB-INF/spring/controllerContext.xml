@@ -16,5 +16,11 @@
 			class="com.solomong.refrigerator.controller.RefrigeratorController">
 			
 	</bean>
+	
+	<bean	id="RecipeController"
+			class="com.solomong.www.recipe.web.RecipeController">
+			<property name="recipeService" ref="recipeService" />
+	</bean>
+	
 
 </beans>
