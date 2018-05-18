@@ -15,6 +15,8 @@
 <title>SoloMong</title>
  <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+	
+	
 <script type="text/javascript">
 	$().ready( function() {
 		var $form_modal = $('.user-modal'), 
@@ -123,6 +125,9 @@
 			});
 	});
 </script>
+
+
+
 <link rel="stylesheet" href="static/main/css/linearicons.css">	
 <link rel="stylesheet" href="static/main/css/font-awesome.min.css">
 <link rel="stylesheet" href="static/main/css/bootstrap.css">
@@ -134,9 +139,9 @@
 </head>
 	
 <body>
-	<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <!-- 	<script src="static/js/vendor/jquery-2.2.4.min.js"></script> -->
 	<script src="static/js/vendor/bootstrap.min.js"></script>			
+	<script src="static/js/vendor/bootstrap.js"></script>			
 	<script src="static/js/easing.min.js"></script>			
 	<script src="static/js/hoverIntent.js"></script>
 	<script src="static/js/superfish.min.js"></script>	
@@ -148,58 +153,79 @@
 	<script src="static/js/parallax.min.js"></script>	
 	<script src="static/js/mail-script.js"></script>	
 	<script src="static/js/main.js"></script>	
-
 	<header id="header" id="home">
-	<div class="container">
-		<div class="row align-items-center justify-content-between d-flex">
-			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
-			</div>
-			<nav id="nav-menu-container">
+			<nav class="main-nav" style="margin-left:1250px;"> 
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="/">홈</a></li>
-					<li><a href="<c:url value="/recipe"/>">레시피</a></li>
-					<li><a href="#chefs">커뮤니티</a></li>
-					<c:if test = "${empty sessionScope.__USER__}">
-					<nav class="main-nav">
-						<div style="width: 400px; height:40px;">
-							<li><a class="signin">로그인</a></li>
-							<li><a class="signup">회원가입</a></li>
-						</div>
-					</nav>
-					</c:if>
-					<c:if test = "${not empty sessionScope.__USER__}">
-						<li class="menu-has-children"><a href="">회원정보</a>
-							<ul>
-								<li><a href="generic.html">냉장고</a></li>
-								<li><a href="elements.html">마이페이지</a></li>
-								<li><a href="elements.html">로그아웃</a></li>
-							</ul>
-						</li>
-					</c:if>
+					<li><a class="signin">로그인/회원가입</a></li>
 				</ul>
 			</nav><!-- #nav-menu-container -->		    		
-		</div>
-	</div>
 	</header>
-
-			<!-- start banner Area -->
-	<section class="banner-area relative" id="home">
+	
+	<div style="height:100px;">
 		<div class="container">
-			<div class="row fullscreen d-flex align-items-center justify-content-start">
-				<div class="banner-content col-lg-8 col-md-12">
-					<h4 class="text-white text-uppercase">Wide Options of Choice</h4>
-					<h1>
-						Delicious Receipes					
-					</h1>
-					<p class="text-white">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp <br> or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
-					</p>
-					<a href="#" class="primary-btn header-btn text-uppercase">Check Our Menu</a>
-				</div>												
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
+				</div>
+					<ul class="nav-menu" style="margin-right: 500px;">
+						<li class="menu-active"><a href="/">홈</a></li>
+						<li><a href="<c:url value="/list"/>">레시피</a></li>
+						<li><a href="#chefs">커뮤니티</a></li>
+
+						<c:if test = "${empty sessionScope.__USER__}">
+						</c:if>
+						<c:if test = "${not empty sessionScope.__USER__}">
+							<li class="menu-has-children"><a href="">회원정보</a>
+								<ul>
+									<li><a href="generic.html">냉장고</a></li>
+									<li><a href="elements.html">마이페이지</a></li>
+									<li><a href="elements.html">로그아웃</a></li>
+								</ul>
+							</li>
+						</c:if>
+					</ul>
 			</div>
 		</div>
-	</section>
+	</div>
+
+			<!-- start banner Area --> 
+		<div class="container" style="width:900px; height:500px; ">
+			
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				  </ol>
+				
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				      <img src="" alt="...">
+				      <div class="carousel-caption">
+				        ...
+				      </div>
+				    </div>
+				    <div class="item">
+				      <img src="" alt="...">
+				      <div class="carousel-caption">
+				      </div>
+				    </div>
+				    ...
+				  </div>
+				
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+			</div>
+		</div> 
 			<!-- End banner Area -->	
 
 			<!-- Start top-dish Area -->
@@ -208,38 +234,31 @@
 			<div class="row d-flex justify-content-center">
 				<div class="menu-content pb-60 col-lg-8">
 					<div class="title text-center">
-						<h1 class="mb-10">Our Top Rated Dishes</h1>
-						<p>Who are in extremely love with eco friendly system.</p>
+						<h1 class="mb-10">e-요리 레시피 Top3</h1>
 					</div>
 				</div>
 			</div>						
 			<div class="row">
 				<div class="single-dish col-lg-4">
-					<div class="thumb">
-						<img class="img-fluid"  src="static/main/img/d1.jpg" alt="">
+					<div class="thumb" >               <!-- e요리 이미지 주소 파싱 -->
+						<img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201711/4e91dab57641a2e847c8dc5e6cc240371.png&w=640&h=500&edit=c&t=bb330153a00f9b0f84564b739a2dd1712cab4882"
+						 		style="width:350px; height:240px;">
 					</div>
-					<h4 class="text-uppercase pt-20 pb-20">Bread Fruit Cheese Sandwich</h4>
-					<p>
-						inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-					</p>
+					<h4 class="text-uppercase pt-20 pb-20">술쟁이 박나래가 알려주는 초간단 술안주!! 차돌박이숙주볶음</h4>
 				</div>
 				<div class="single-dish col-lg-4">
 					<div class="thumb">
-						<img class="img-fluid"  src="static/main/img/d2.jpg" alt="">
+						<img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201703/bae0a051ae9aa8a8586e434d238deee01.jpg&w=640&h=500&edit=c&t=6f33f35875866e88d8a302dd0996beb30b9ae453"
+								style="width:350px; height:240px;">
 					</div>
-					<h4 class="text-uppercase pt-20 pb-20">Beef Cutlet with Spring Onion</h4>
-					<p>
-						inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-					</p>
+					<h4 class="text-uppercase pt-20 pb-20">집들이, 홈파티 음식 중 최고의 메뉴, 밀푀유나베!!</h4>
 				</div>
 				<div class="single-dish col-lg-4">
 					<div class="thumb">
-						<img class="img-fluid"  src="static/main/img/d3.jpg" alt="">
+						<img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201805/dfbcfb20735a5f62e488cd9ad29183db1.png&w=640&h=500&edit=c&t=4c81ea590ba93d18bf32d1701f5579feca6f5109"
+								style="width:350px; height:240px;">
 					</div>
-					<h4 class="text-uppercase pt-20 pb-20">Meat with sauce & Vegetables</h4>
-					<p>
-						inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-					</p>
+					<h4 class="text-uppercase pt-20 pb-20">연어 카나페 만들기</h4>
 				</div>												
 			</div>
 		</div>	
@@ -247,83 +266,64 @@
 			
 	<!-- Start video Area -->
 	<section class="video-area">
-		<div class="container">
-			<div class="row justify-content-center align-items-center flex-column">
-				<a class="play-btn" href="http://www.youtube.com/watch?v=0O2aH4XLbto">
-					<img src="static/main/img/play-btn.png" alt="">
-				</a>
-				<h3 class="pt-20 pb-20 text-white">We Always serve the vaping hot and delicious foods</h3>
-				<p class="text-white">Youtube video will appear in popover</p>
+		<div class="container" >
+			
+			<div class="container" style="    padding-top: 100px;">
+			<div class="row d-flex justify-content-center">
+				<div class="menu-content pb-70 col-lg-8">
+					<div class="title text-center">
+						<h1 class="mb-10">나만의 레시피 Top3</h1>
+					</div>
+				</div>
+			</div>					
+			<div class="row">
+				<div class="col-lg-4  single-blog">
+					<div class="thumb">
+						<img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201703/f9891e4f858c9fcb77b7852d304c3b4d1.jpg&w=640&h=500&edit=c&t=6c783a315327acbdbc77b6b00915c8f2f77281b8"
+								style="width:350px; height:240px;">
+					</div>
+					<p class="date">kakaobean</p>
+					<a href="#">
+						<h4>수박 다양하게 자르기(간편하게 먹을수 있게)</h4>
+					</a>
+				</div>
+				<div class="col-lg-4 single-blog">
+					<div class="thumb">
+						<img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201703/a22c855ab4e2f5c8559d5d0a372c2ce01.jpg&w=640&h=500&edit=c&t=e60821f2a9903521fb58507d82f76b8fd2955f1a"
+								style="width:350px; height:240px;">
+					</div>
+					<p class="date">TaeKyoung77</p>
+					<a href="#">
+						<h4>마약김밥 만드는법, 겨자소스 만드는법</h4>
+					</a>
+				</div>
+				<div class="col-lg-4 single-blog">
+					<div class="thumb">
+						<img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201705/af31d86b8b9876a12434f5338dfb371a1.jpg&w=640&h=500&edit=c&t=a10895e82edc709ad175a2a70b83169828f4ae92"
+								style="width:350px; height:240px;">
+					</div>
+					<p class="date">youngbin8808</p>
+					<a href="#">
+						<h4>돼지 불고기 바싹하게 굽기 인기메뉴</h4>
+					</a>
+				</div>
+							
 			</div>
 		</div>	
+			
+		</div>	
+	</section>
+	
+	<section class="top-dish-area section-gap" id="dish">
+		<div style="height:200px;">
+		
+		</div>
 	</section>
 	<!-- End video Area -->
 			
 
 	<!-- start blog Area -->		
-	<section class="blog-area section-gap" id="blog">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="menu-content pb-70 col-lg-8">
-					<div class="title text-center">
-						<h1 class="mb-10">Latest From Our Blog</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.</p>
-					</div>
-				</div>
-			</div>					
-			<div class="row">
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid" src="static/main/img/b1.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<a href="#">
-						<h4>Cooking Perfect Fried Rice in minutes</h4>
-					</a>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>									
-				</div>
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid" src="static/main/img/b2.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<a href="#">
-						<h4>Secret of making Heart Shaped eggs</h4>
-					</a>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>									
-				</div>
-				<div class="col-lg-3 col-md-6 single-blog">
-					<div class="thumb">
-						<img class="img-fluid" src="static/main/img/b3.jpg" alt="">
-					</div>
-					<p class="date">10 Jan 2018</p>
-					<a href="#">
-						<h4>How to check steak if it is tender or not</h4><
-					/a>
-					<p>
-						inappropriate behavior ipsum dolor sit amet, consectetur.
-					</p>
-					<div class="meta-bottom d-flex justify-content-between">
-						<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-						<p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-					</div>									
-				</div>
-				<div class="col-lg-3 col-md-6 single-blog">										
-			</div>
-		</div>	
-	</section>
+
 	<!-- end blog Area -->	
 				
 	<!-- start footer Area -->		
@@ -384,6 +384,8 @@
 			</div>
 		</div>
 	</footer>	
+	
+	
 	<div class="user-modal">
 		<div class="user-modal-container">
 			<ul class="switcher">
@@ -481,6 +483,7 @@
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
 
