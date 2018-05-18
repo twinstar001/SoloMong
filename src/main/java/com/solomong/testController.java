@@ -11,6 +11,10 @@ public class testController {
 	public String viewTest() {
 		return "main";
 	}
+	@RequestMapping("/modalTest")
+	public String modalTest() {
+		return "mainModal";
+	}
 	
 	@RequestMapping("/list") 
 		public String recipe() {
