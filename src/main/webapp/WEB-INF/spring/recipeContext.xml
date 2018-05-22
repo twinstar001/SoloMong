@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<!-- BoardDao의 DI / oracle과 연결 -->
+	<bean	id="recipeDao" class="com.solomong.www.recipe.dao.RecipeDaoImpl">
+			<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</bean>
+	
+	<!-- BoardService의 DI / oracle과 연결 -->
+	<bean id = "recipeService"  class="com.solomong.www.recipe.service.RecipeServiceImpl">
+		<property name="recipeDao" ref = "recipeDao"/>
+	</bean>
+
+
+</beans>

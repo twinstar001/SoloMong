@@ -80,7 +80,7 @@
 </script>
 </head>
 <body>
-
+	<jsp:include page="/WEB-INF/view/template/remocon.jsp" />	
 	<div id="wrapper">
 		<div>
 			<form id="loginForm">

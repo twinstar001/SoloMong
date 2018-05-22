@@ -3,13 +3,24 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean	id="testControler"
-			class="com.solomong.www.testController">
+	<bean	id="testController"
+			class="com.solomong.testController">
 	</bean>
 	
 	<bean	id="MemberController"
-			class="com.solomong.www.member.controller.MemberController">
+			class="com.solomong.member.controller.MemberController">
 			
 	</bean>
+	
+	<bean	id="RefigeratorController"
+			class="com.solomong.refrigerator.controller.RefrigeratorController">
+			
+	</bean>
+	
+	<bean	id="RecipeController"
+			class="com.solomong.www.recipe.web.RecipeController">
+			<property name="recipeService" ref="recipeService" />
+	</bean>
+	
 
 </beans>

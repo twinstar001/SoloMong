@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html lang="zxx" class="no-js">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +26,7 @@
 	
 <body>
 	<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
-	<script src="static/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- 	<script src="static/js/vendor/jquery-2.2.4.min.js"></script> -->
 	<script src="static/js/vendor/bootstrap.min.js"></script>			
 	<script src="static/js/easing.min.js"></script>			
 	<script src="static/js/hoverIntent.js"></script>
@@ -44,12 +44,12 @@
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/logo.png" alt="" title="" /></a>
+				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a href="/">홈</a></li>
-					<li><a href="#dish">레시피</a></li>
+					<li><a href="<c:url value="/recipe"/>">레시피</a></li>
 					<li><a href="#chefs">커뮤니티</a></li>
 					<c:if test = "${empty sessionScope.__USER__}">
 						<li><a href="/SoloMong/loginRegist">로그인/회원가입</a></li>
