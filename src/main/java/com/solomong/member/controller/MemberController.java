@@ -21,5 +21,10 @@ public class MemberController {
 		
 		return "main";
 	}
+	
+	@RequestMapping(value="/mypage" , method= RequestMethod.GET)
+	public String viewMyPage() {
+		return "member/mypage";
+	}
 
 }

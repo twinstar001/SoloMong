@@ -21,9 +21,9 @@
 <body>
 <header>
 <jsp:include page="/WEB-INF/view/template/topBar.jsp"/>
-	<div style="background-color:red; height:100px;">상단바 부분</div>  <!-- 상단바 위치/ include 시키기 -->
+	<!-- 상단바 위치/ include 시키기 -->
 </header>
-	<div style="width:1100px; margin-left:130px; " >
+	<div style="width:1100px; margin-left:130px; margin:0 auto;" >
 		<div style="background-color:#8a6e8e; height:80px;">레시피 제목</div><!-- 
 	 --><div style="background-color:#5f2255; height:20px; margin-bottom:50px;">
 			<div style="display:inline-block;">등록일　　</div><!-- 
@@ -31,7 +31,7 @@
 			 --><div style="display:inline-block;">닉네임　　</div>
 			<hr>  
    	    </div>
-		<div style="width:1020px;">
+		<div style="width:1020px; margin:0 auto;">
 		
 			<!-- ----------------------- 왼쪽 구역 -----------------------------  -->
 			

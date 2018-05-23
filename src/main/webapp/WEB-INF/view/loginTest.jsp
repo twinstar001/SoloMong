@@ -138,7 +138,7 @@
 		<div class="user-modal-container">
 			<ul class="switcher">
 				<li><a>Sign in</a></li>
-				<li><a>New account</a></li>
+				<li><a>New account</a></li>	
 			</ul>
 
 			<div id="login">
