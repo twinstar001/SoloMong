@@ -26,7 +26,7 @@ public class CommunityBoardController {
 	@RequestMapping(value= "/community/createboard", method = RequestMethod.POST)
 	public ModelAndView doWriteBoard() {
 		ModelAndView view = new ModelAndView();
-		
+		//입력 
 		
 		return view;
 		
