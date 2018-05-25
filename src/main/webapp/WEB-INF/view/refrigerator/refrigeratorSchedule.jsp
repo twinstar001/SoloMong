@@ -15,6 +15,7 @@
 <script type="text/javascript" src="<c:url value="/static/fullcalendar-3.9.0/fullcalendar.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function(){
+		
 		$('#calendar').fullCalendar({
 
 			events: [
@@ -41,6 +42,7 @@
 <body>
 
 	<div id="calendar"></div>
+	<div id="add"><a href="<c:url value="/refrigerator/write"/>">추가하기</a></div>
 
 </body>
 </html>
