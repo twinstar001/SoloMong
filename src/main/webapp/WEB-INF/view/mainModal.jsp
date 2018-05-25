@@ -13,6 +13,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="static/loginRegist/css/loginRegist.css">		
 <title>SoloMong</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
  <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 	
@@ -188,44 +197,50 @@
 		</div>
 	</div>
 
-			<!-- start banner Area --> 
-		<div class="container" style="width:900px; height:500px; ">
-			
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-				  <!-- Indicators -->
-				  <ol class="carousel-indicators">
-				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-				  </ol>
-				
-				  <!-- Wrapper for slides -->
-				  <div class="carousel-inner" role="listbox">
-				    <div class="item active">
-				      <img src="" alt="...">
-				      <div class="carousel-caption">
-				        ...
-				      </div>
-				    </div>
-				    <div class="item">
-				      <img src="" alt="...">
-				      <div class="carousel-caption">
-				      </div>
-				    </div>
-				    ...
-				  </div>
-				
-				  <!-- Controls -->
-				  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-			</div>
-		</div> 
+	<div class="title text-center" style="padding-bottom: 60px;">
+		<h1 class="mb-10">오늘의 추천 레시피</h1>
+	</div>
+				<!-- start banner Area --> 
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin:0 auto; width: 1100px; height: 500px;" >
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  </ol>
+	
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	    <div class="item active">
+	      <img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201711/4e91dab57641a2e847c8dc5e6cc240371.png&w=640&h=500&edit=c&t=bb330153a00f9b0f84564b739a2dd1712cab4882"
+	      				style="width: 1100px; height: 500px;" >
+	      <div class="carousel-caption">
+	      </div>
+	    </div>
+	    <div class="item">
+	      <img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201703/a22c855ab4e2f5c8559d5d0a372c2ce01.jpg&w=640&h=500&edit=c&t=e60821f2a9903521fb58507d82f76b8fd2955f1a"
+	      				style="width: 1100px; height: 500px;">
+	      <div class="carousel-caption">
+	      </div>
+	    </div>
+	    <div class="item">
+	      <img src="http://img.ssgcdn.com/trans.ssg?src=/cmpt/recipe/201705/af31d86b8b9876a12434f5338dfb371a1.jpg&w=640&h=500&edit=c&t=a10895e82edc709ad175a2a70b83169828f4ae92"
+	      				style="width: 1100px; height: 500px;">
+	      <div class="carousel-caption">
+	      </div>
+	    </div>
+	  </div>
+	
+	  <!-- Controls -->
+	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
 			<!-- End banner Area -->	
 
 			<!-- Start top-dish Area -->
@@ -271,7 +286,7 @@
 			<div class="container" style="    padding-top: 100px;">
 			<div class="row d-flex justify-content-center">
 				<div class="menu-content pb-70 col-lg-8">
-					<div class="title text-center">
+					<div class="title text-center"> 
 						<h1 class="mb-10">나만의 레시피 Top3</h1>
 					</div>
 				</div>
@@ -313,12 +328,30 @@
 			
 		</div>	
 	</section>
-	
-	<section class="top-dish-area section-gap" id="dish">
-		<div style="height:200px;">
-		
+	<div style="width:1100px; height:200px; margin:0 auto; margin-top:120px; margin-bottom:120px;">
+		<div style="display:inline-block; width: 500px;">
+			<div class="list-group">
+				  <a href="#" class="list-group-item active">
+				    커뮤니티
+				  </a>
+				  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+				  <a href="#" class="list-group-item">Morbi leo risus</a>
+				  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+				  <a href="#" class="list-group-item">Vestibulum at eros</a>
+			</div>
+		</div><!-- 
+		 --><div style="display:inline-block; width: 500px; margin-left:100px;">
+			<div class="list-group">
+				  <a href="#" class="list-group-item active">
+				    QnA
+				  </a>
+				  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+				  <a href="#" class="list-group-item">Morbi leo risus</a>
+				  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+				  <a href="#" class="list-group-item">Vestibulum at eros</a>
+			</div>
 		</div>
-	</section>
+	</div>
 	<!-- End video Area -->
 			
 
