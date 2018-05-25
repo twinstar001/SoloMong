@@ -22,53 +22,34 @@
 <link rel="stylesheet" href="static/main/css/animate.min.css">
 <link rel="stylesheet" href="static/main/css/owl.carousel.css">
 <link rel="stylesheet" href="static/main/css/main.css">
+<link rel="stylesheet" href="static/loginRegist/css/loginRegist.css">
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<!-- 	<script src="static/js/vendor/jquery-2.2.4.min.js"></script> -->
+<script src="static/js/vendor/bootstrap.min.js"></script>			
+<script src="static/js/easing.min.js"></script>			
+<script src="static/js/hoverIntent.js"></script>
+<script src="static/js/superfish.min.js"></script>	
+<script src="static/js/jquery.ajaxchimp.min.js"></script>
+<script src="static/js/jquery.magnific-popup.min.js"></script>	
+<script src="static/js/owl.carousel.min.js"></script>			
+<script src="static/js/jquery.sticky.js"></script>
+<script src="static/js/jquery.nice-select.min.js"></script>			
+<script src="static/js/parallax.min.js"></script>	
+<script src="static/js/mail-script.js"></script>	
+<script src="static/js/main.js"></script>	
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+$().ready( function() {
+	
+});
+
+
+</script>
 </head>
 	
 <body>
-	<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
-<!-- 	<script src="static/js/vendor/jquery-2.2.4.min.js"></script> -->
-	<script src="static/js/vendor/bootstrap.min.js"></script>			
-	<script src="static/js/easing.min.js"></script>			
-	<script src="static/js/hoverIntent.js"></script>
-	<script src="static/js/superfish.min.js"></script>	
-	<script src="static/js/jquery.ajaxchimp.min.js"></script>
-	<script src="static/js/jquery.magnific-popup.min.js"></script>	
-	<script src="static/js/owl.carousel.min.js"></script>			
-	<script src="static/js/jquery.sticky.js"></script>
-	<script src="static/js/jquery.nice-select.min.js"></script>			
-	<script src="static/js/parallax.min.js"></script>	
-	<script src="static/js/mail-script.js"></script>	
-	<script src="static/js/main.js"></script>	
 
-	<header id="header" id="home">
-	<div class="container">
-		<div class="row align-items-center justify-content-between d-flex">
-			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
-			</div>
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					<li class="menu-active"><a href="/">홈</a></li>
-					<li><a href="<c:url value="/recipe"/>">레시피</a></li>
-					<li><a href="#chefs">커뮤니티</a></li>
-					<c:if test = "${empty sessionScope.__USER__}">
-						<li><a href="/SoloMong/loginRegist">로그인/회원가입</a></li>
-					</c:if>
-					<c:if test = "${not empty sessionScope.__USER__}">
-						<li class="menu-has-children"><a href="">회원정보</a>
-							<ul>
-								<li><a href="generic.html">냉장고</a></li>
-								<li><a href="elements.html">마이페이지</a></li>
-								<li><a href="elements.html">로그아웃</a></li>
-							</ul>
-						</li>
-					</c:if>
-				</ul>
-			</nav><!-- #nav-menu-container -->		    		
-		</div>
-	</div>
-	</header>
-
+<jsp:include page="/WEB-INF/view/template/topBar.jsp"></jsp:include>
 			<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="container">
