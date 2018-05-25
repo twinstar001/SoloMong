@@ -26,8 +26,10 @@
 
 	//open modal
 	$main_nav.on('click', function(event) {
+		console.log($(event.target));
 						if ( $(event.target).is($main_nav) ) {
 							// on mobile open the submenu
+							console.log("open this event");
 							$(this).children('ul').toggleClass('is-visible');
 						} else {
 							// on mobile close submenu
