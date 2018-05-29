@@ -1,4 +1,4 @@
-package com.solomong.www.recipe.dao;
+package com.solomong.recipe.dao;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 

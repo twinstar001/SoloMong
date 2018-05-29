@@ -1,4 +1,4 @@
-package com.solomong.www.member.service;
+package com.solomong.member.service;
 
 public class MemberServiceImpl implements MemberService {
 

@@ -1,6 +1,6 @@
-package com.solomong.www.recipe.service;
+package com.solomong.recipe.service;
 
-import com.solomong.www.recipe.dao.RecipeDao;
+import com.solomong.recipe.dao.RecipeDao;
 
 public class RecipeServiceImpl implements RecipeService {
 
