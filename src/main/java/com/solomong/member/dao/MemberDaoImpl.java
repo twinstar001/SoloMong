@@ -1,4 +1,4 @@
-package com.solomong.www.member.dao;
+package com.solomong.member.dao;
 
 public class MemberDaoImpl implements MemberDao{
 

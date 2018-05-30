@@ -1,4 +1,4 @@
-package com.solomong.www.recipe.web;
+package com.solomong.recipe.web;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.solomong.www.recipe.service.RecipeService;
+import com.solomong.recipe.service.RecipeService;
 
 @Controller
 public class RecipeController {
@@ -25,11 +25,11 @@ public class RecipeController {
 	public void test() {
 	
 		try {
-		    // 1. URL ÏÑ†Ïñ∏
+		    // 1. URL ?Ñ†?ñ∏
 		    String connUrl = "http://emart.ssg.com/recipe/recipe/detail.ssg?recipeId=1";
-		    // 2. HTML Í∞ÄÏ†∏Ïò§Í∏∞
+		    // 2. HTML Í∞??†∏?ò§Í∏?
 		    Document doc = Jsoup.connect(connUrl).get();
-		    // 3. Í∞ÄÏ†∏Ïò® HTML Document Î•º ÌôïÏù∏ÌïòÍ∏∞
+		    // 3. Í∞??†∏?ò® HTML Document Î•? ?ôï?ù∏?ïòÍ∏?
 		    //System.out.println(doc.toString());
 		    //System.out.println(doc.select(".post_subject").first());
 		    //System.out.println(doc.select(".txt_info"));
