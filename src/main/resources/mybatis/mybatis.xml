@@ -4,7 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+<<<<<<< HEAD
 
 
+=======
+	<typeAliases>
+		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
+	</mappers>
+>>>>>>> master
 
 </configuration>

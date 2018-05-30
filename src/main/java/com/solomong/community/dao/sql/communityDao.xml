@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommunityDao">
+	<resultMap type="CommunityVO" id="CommunityVOMap">
+			<id column="ID" property="id"/>
+  			<result column="TITLE" property="title"/>
+  			<result column="BODY" property="body"/>
+  			<result column="RECOMMEND_COUNT" property="recommendCount"/>
+  			<result column="VIEW_COUNT" property="viewCount"/>
+  			<result column="WRITE_DATE" property="writeDate"/>
+  			
+  	</resultMap>
+	 
+	<insert id="insertCommunity" parameterType="CommunityVO">
+		INSERT INTO COMMUNITY_TEST (
+			ID
+			, TITLE
+			, BODY
+			, RECOMMEND_COUNT
+			, VIEW_COUNT
+			, WRITE_DATE 
+			 
+			
+		) VALUES (
+			COMMUNITY_ID_SEQ.NEXTVAL
+			, #{title}
+			, #{body}
+			, 0
+			, 0
+			, SYSDATE
+		)
+	</insert>
+	
+	<select id="selectAll" resultType="CommunityVO">
+		SELECT	ID
+				, TITLE
+				, VIEW_COUNT viewCount
+				, TO_CHAR(WRITE_DATE, 'YYYY-MM-DD') writeDate
+				
+			   
+		FROM	COMMUNITY_TEST
+				
+		ORDER	BY ID DESC
+	</select>
+	
+	<select id="selectOne" parameterType="_int" resultType="CommunityVO">
+		SELECT	ID
+				, TITLE
+				, BODY
+				, RECOMMEND_COUNT recommendCount
+				, TO_CHAR(WRITE_DATE, 'YYYY-MM-DD HH24:MI') writeDate
+				
+		FROM	COMMUNITY_TEST
+				
+		WHERE	ID = #{id}
+	</select>
+	
+	<update id="incrementView" parameterType="_int">
+		UPDATE	COMMUNITY_TEST
+		SET		VIEW_COUNT = VIEW_COUNT + 1
+		WHERE	ID = #{id}
+	</update>
+	
+		
+	<update id="incrementRecommend" parameterType="_int">
+		UPDATE	COMMUNITY_TEST
+		SET		RECOMMEND_COUNT = RECOMMEND_COUNT + 1
+		WHERE	ID = #{id}
+	</update>
+	
+	<update id="updateCommunity" parameterType="CommunityVO">
+		UPDATE	COMMUNITY_TEST
+		SET		WRITE_DATE = SYSDATE
+				<if test="title != null and title != ''">	
+				, TITLE = #{title}
+				</if>  					
+				<if test="body != null and body != ''">
+				, BODY = #{body}
+				</if>
+		WHERE	ID = #{id}
+  	</update>
+  		
+	<delete id="deleteCommunity" parameterType="_int">
+		DELETE
+		FROM	COMMUNITY_TEST
+		WHERE	ID = #{id}
+	</delete>
+</mapper>
