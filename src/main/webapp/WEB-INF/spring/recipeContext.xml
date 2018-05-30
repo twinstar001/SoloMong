@@ -6,12 +6,12 @@
 
 
 	<!-- BoardDao의 DI / oracle과 연결 -->
-	<bean	id="recipeDao" class="com.solomong.www.recipe.dao.RecipeDaoImpl">
+	<bean	id="recipeDao" class="com.solomong.recipe.dao.RecipeDaoImpl">
 			<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</bean>
 	
 	<!-- BoardService의 DI / oracle과 연결 -->
-	<bean id = "recipeService"  class="com.solomong.www.recipe.service.RecipeServiceImpl">
+	<bean id = "recipeService"  class="com.solomong.recipe.service.RecipeServiceImpl">
 		<property name="recipeDao" ref = "recipeDao"/>
 	</bean>
 
