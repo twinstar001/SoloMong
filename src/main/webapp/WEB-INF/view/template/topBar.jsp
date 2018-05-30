@@ -11,6 +11,12 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="static/loginRegist/css/loginRegist.css">
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <script type="text/javascript">
 $().ready( function() {
 	var $form_modal = $('.user-modal'), 

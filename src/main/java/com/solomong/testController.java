@@ -13,8 +13,16 @@ public class testController {
 	
 	@RequestMapping("/main")
 	public String viewTest() {
+		
 		return "main";
 	}
+	
+	@RequestMapping("/main2")
+	public String viewTest2() {
+		
+		return "template/topBar";
+	}
+	
 	@RequestMapping("/modalTest")
 	public String modalTest() {
 		return "mainModal";
