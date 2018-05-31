@@ -9,17 +9,9 @@ import com.solomong.member.vo.MemberVO;
 @Controller
 public class MemberController {
 	
-	@RequestMapping(value="/loginRegist" , method= RequestMethod.GET)
+	@RequestMapping(value="/kakaoLogin" , method= RequestMethod.GET)
 	public String viewLoginRegistPage() {
 		return "/loginTest";
-	}
-	
-	@RequestMapping(value="loginRegist", method=RequestMethod.POST)
-	public String doLogin(MemberVO member) {
-		
-		System.out.println(member.getMemberId() + " , " + member.getPassword());
-		
-		return "main";
 	}
 	
 	@RequestMapping(value="/mypage" , method= RequestMethod.GET)
