@@ -32,7 +32,7 @@
 			<label for="default">재료를 선택해 주세요</label>
 		 	<input type="text" id="default" list="ingredients" placeholder="ex)감자">
 			<datalist id="ingredients">
-		    	<!-- 여기에 DB에서 재료 타입 데이터 불러올것 -->
+		    	<!-- 여기에 DB에서 재료 데이터 불러올것 -->
 		 	</datalist>
 		</div>
 		<div>
