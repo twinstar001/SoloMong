@@ -1,25 +1,40 @@
 package com.solomong;
 
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
-import org.springframework.http.HttpRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.solomong.Util.location.Location;
 
 @Controller
 public class testController {
 	
 	@RequestMapping("/main")
-	public String viewTest() {
+	public String viewTest(HttpSession session, HttpServletRequest request) throws IOException {
+		Location locationVO = new Location();
+		
+		if (session.getAttribute("SOLO_LOCATION") != null) {
+			locationVO.setting( request.getRemoteAddr() );
+			session.setAttribute("SOLO_LOCATION", locationVO);
+		}else {
+			locationVO.setting( request.getRemoteAddr() );
+		}
+		
+		System.out.println( "접속위치: "+ locationVO.getLocation() );
+		System.out.println( "접속지 날씨: "+ locationVO.getWeather() );
+		System.out.println( "접속지 온도: "+ locationVO.getTmp() );
 		
 		return "main";
 	}
 	
 	@RequestMapping("/main2")
-	public String viewTest2() {
-		
+	public String viewTest2(HttpSession session) {
+		session.invalidate();
 		return "template/topBar";
 	}
 	
