@@ -26,6 +26,16 @@ public class testController {
 		return "mainModal";
 	}
 	
+	@RequestMapping("/carouselTest")
+	public String carouselTest() {
+		return "carouselTest";
+	}
+	@RequestMapping("/topBar")
+	public String topBar() {
+		return "template/topBar";
+	}
+	
+	
 	@RequestMapping("/list") 
 		public String recipe() {
 			return "recipe/list";

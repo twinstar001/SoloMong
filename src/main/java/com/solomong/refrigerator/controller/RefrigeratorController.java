@@ -31,6 +31,7 @@ public class RefrigeratorController {
 	
 	@RequestMapping(value="/refrigerator/write", method=RequestMethod.GET)
 	public String viewRefrigeratorWrite() {
+		
 		return "refrigerator/refrigeratorWrite";
 	}
 	

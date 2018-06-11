@@ -1,4 +1,4 @@
-package com.solomong.www.recipe.service;
+package com.solomong.recipe.service;
 
 public interface RecipeService {
 

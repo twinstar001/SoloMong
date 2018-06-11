@@ -1,4 +1,4 @@
-package com.solomong.www.recipe.vo;
+package com.solomong.recipe.vo;
 
 public class IngredientVO {
 

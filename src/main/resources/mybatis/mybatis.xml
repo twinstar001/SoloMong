@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+<<<<<<< HEAD
 
 	<typeAliases>
 		<typeAlias type="com.solomong.member.vo.KakaoMemberVO" alias="KakaoMemberVO"/>
@@ -14,6 +15,13 @@
 	<mappers>
 		<mapper resource="com/solomong/www/recipe/dao/sql/ingredient.xml"/>
 		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
+=======
+	<typeAliases>
+		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
+>>>>>>> master
 	</mappers>
 	
 
