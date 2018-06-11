@@ -5,8 +5,16 @@
 
 <configuration>
 
+	<typeAliases>
+		<typeAlias type="com.solomong.member.vo.KakaoMemberVO" alias="KakaoMemberVO"/>
+		<typeAlias type="com.solomong.member.vo.GoogleMemberVO" alias="GoogleMemberVO"/>
+		<typeAlias type="com.solomong.member.vo.MemberVO" alias="MemberVO"/>
+	</typeAliases>
+	
 	<mappers>
 		<mapper resource="com/solomong/www/recipe/dao/sql/ingredient.xml"/>
+		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
 	</mappers>
+	
 
 </configuration>

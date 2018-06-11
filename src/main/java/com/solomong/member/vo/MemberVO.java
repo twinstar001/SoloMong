@@ -2,22 +2,31 @@ package com.solomong.member.vo;
 
 public class MemberVO {
 
-	private int userId;
+	private int memberId;
 	private int idType;
-	private String memberId;
+	private String userId;
 	private String password;
 	private String salt;
 	private String nickname;
 	private String email;
 	private String birthday;
 	private String gender;
-	private String profileImageLink;
+	private String profileImage;
 
-	public int getUserId() {
+	
+	public int getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -27,14 +36,6 @@ public class MemberVO {
 
 	public void setIdType(int idType) {
 		this.idType = idType;
-	}
-
-	public String getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
 	}
 
 	public String getPassword() {
@@ -85,12 +86,12 @@ public class MemberVO {
 		this.gender = gender;
 	}
 
-	public String getProfileImageLink() {
-		return profileImageLink;
+	public String getProfileImage() {
+		return profileImage;
 	}
 
-	public void setProfileImageLink(String profileImageLink) {
-		this.profileImageLink = profileImageLink;
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 
 }
