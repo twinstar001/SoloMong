@@ -10,7 +10,7 @@ import com.solomong.history.vo.History;
 import com.solomong.history.vo.HistoryVO;
 import com.solomong.member.constants.Member;
 import com.solomong.member.vo.MemberVO;
-import com.solomong.Util.location.IpToWeather;
+import com.solomong.util.location.IpToWeather;
 
 public class locationInterceptor extends HandlerInterceptorAdapter {
 	

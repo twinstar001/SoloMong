@@ -1,4 +1,4 @@
-package com.solomong.Util;
+package com.solomong.util;
 
 import java.util.Calendar;
 

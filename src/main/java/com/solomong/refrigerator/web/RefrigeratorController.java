@@ -23,7 +23,7 @@ import com.solomong.ingredient.vo.IngredientVO;
 import com.solomong.member.contants.Member;
 import com.solomong.refrigerator.service.RefrigeratorService;
 import com.solomong.refrigerator.vo.RefrigeratorVO;
-import com.solomong.Util.DateUtil;
+import com.solomong.util.DateUtil;
 
 @Controller
 public class RefrigeratorController {
