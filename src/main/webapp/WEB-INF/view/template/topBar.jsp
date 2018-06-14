@@ -14,6 +14,7 @@
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="720597646651-v2s49mjj7lrqjdf3f89k2fvlmdgam02h.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script src="<c:url value="/static/js/jquery.session.js"/>" ></script>
 <script type="text/javascript">
 $().ready( function() {
 	var $form_modal = $('.user-modal'), 
@@ -64,8 +65,6 @@ $().ready( function() {
 		var $this = $(this), $password_field = $this.prev('input');
 		('password' == $password_field.attr('type')) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
 		('Show' == $this.text()) ? $this.text('Hide') : $this.text('Show');
-		//focus and move cursor to the end of input field
-		$password_field.putCursorAtEnd();
 	});
 
 	//show forgot-password form 
@@ -103,7 +102,7 @@ $().ready( function() {
 	}
 
 	//REMOVE THIS - it's just to show error messages 
-	$form_login.find('input[type="submit"]').on('click', function(event) {
+	/* $form_login.find('input[type="submit"]').on('click', function(event) {
 		event.preventDefault();
 		$form_login.find('input[type="email"]').toggleClass('has-error')
 											   .next('span')
@@ -115,8 +114,202 @@ $().ready( function() {
 													.next('span')
 													.toggleClass('is-visible');
 
-	});
+	}); */
+
+	$("#normalLoginBtn").click(function(){
+		console.log("login button click");
+		var invalid = false;
 		
+		if($("#userId").val() == ""){
+			$form_login.find('input[type="text"]').toggleClass('has-error')
+			   .next('span')
+			   .toggleClass('is-visible');
+			invalid = true;
+		}
+		if($("#password").val() == ""){
+			$form_signup.find('input[type="password"]').toggleClass('has-error')
+			.next('span')
+			.toggleClass('is-visible');
+			invalid = true;
+		}
+		if(invalid == false){
+			console.log("valid check pass");
+			$("#loginForm").attr({
+				"method" : "post",
+				"action" : "<c:url value='/normalLogin' />" 
+			}).submit();
+		}
+		invalid = false;
+	});
+	
+	/*	Start Sign Up	*/
+	
+	var uniqueInvalid = false;
+	
+	// id 중복 체크
+	$("#signup-userId").keyup(function(){
+		$.post("<c:url value='/api/isExist/userId'/>",{
+			userId : $("#signup-userId").val()
+		}, function(response){
+			if(response.isExist){
+				if($("#signup-userId").hasClass("invalidUnique")){
+					return false;
+				}
+				$("#signup-userId").focus()
+				$("#signup-userId").addClass("invalidUnique");
+				$form_signup.find('input[id="signup-userId"]').addClass('has-error')
+																.next('span')
+																.next('span')
+																.addClass('is-visible');
+				uniqueInvalid = true;
+				return false;
+			}else {
+				$form_signup.find('input[id="signup-userId"]').removeClass('has-error')
+															.next('span')
+															.next('span')
+															.removeClass('is-visible');
+				$("#signup-userId").removeClass("invalidUnique");
+				$("#signup-userIdInvalidUniqueSpan").remove();
+				uniqueInvalid = false;
+			}
+		})
+	})
+	
+	// nickname 중복 체크
+	$("#signup-nickanme").keyup(function(){
+		$.post("<c:url value='/api/isExist/nickname'/>",{
+			userId : $("#signup-nickname").val()
+		}, function(response){
+			if(response.isExist){
+				if($("signup-nickname").hasClass("invalidUnique")){
+					return false;
+				}
+				$("#signup-nickname").focuse()
+				afterInvalidUnique("signup-nickname", "아이디");
+				$("signup-nickname").addClass("invalidUnique");
+				uniqueInvalid = true;
+				return false;
+			}else {
+				$("#signup-nickname").removeClass("invalidUnique");
+				$("#signup-nicknameInvalidUniqueSpan").remove();
+				uniqueInvalid = false;
+			}
+		})
+	})
+	
+	
+	// TODO 비밀번호 체크 
+	var passwordInvalid = false;
+	
+	$("#signup-password").keyup(function () {
+		if ($("#signup-password").val() != $("#signup-password-check").val()) {
+			if($("#signup-password").hasClass("invalidPassword")){
+				return false;
+			}
+			$("#signup-password").addClass("invalidPassword");
+			$("#signup-password-check").addClass("invalidPassword");
+			$form_signup.find('input[id="signup-password"]').addClass('has-error')
+														.next('span')
+														.next('span')
+														.addClass('is-visible');
+			$form_signup.find('input[id="signup-password-check"]').addClass('has-error')
+														.next('span')
+														.next('span')
+														.addClass('is-visible');
+			passwordInvalid = true;
+		} else {
+			$("#signup-password").removeClass("invalidPassword");
+			$("#signup-password-check").removeClass("invalidPassword");
+			$form_signup.find('input[id="signup-password"]').removeClass('has-error')
+														.next('span')
+														.next('span')
+														.removeClass('is-visible');
+			$form_signup.find('input[id="signup-password-check"]').removeClass('has-error')
+														.next('span')
+														.next('span')
+														.removeClass('is-visible');
+			passwordInvalid = false;
+		}
+	});
+
+	$("#signup-password-check").keyup(function () {
+		if ($("#signup-password").val() != $("#signup-password-check").val()) {
+			if($("#signup-password-check").hasClass("invalidPassword")){
+				return false;
+			}
+			$("#signup-password").addClass("invalidPassword");
+			$("#signup-password-check").addClass("invalidPassword");
+			$form_signup.find('input[id="signup-password"]').addClass('has-error')
+														.next('span')
+														.next('span')
+														.addClass('is-visible');
+			$form_signup.find('input[id="signup-password-check"]').addClass('has-error')
+														.next('span')
+														.next('span')
+														.addClass('is-visible');
+			passwordInvalid = true;
+		} else {
+			$("#signup-password").removeClass("invalidPassword");
+			$("#signup-password-check").removeClass("invalidPassword");
+			$form_signup.find('input[id="signup-password"]').removeClass('has-error')
+														.next('span')
+														.next('span')
+														.removeClass('is-visible');
+			$form_signup.find('input[id="signup-password-check"]').toggleClass('has-error')
+														.next('span')
+														.next('span')
+														.removeClass('is-visible');
+			
+			passwordInvalid = false;
+		}
+	}); 
+	
+	$("#signUpBtn").click(function(){
+		console.log("click sign up btn")
+		var value = $("#signup-userId").val()
+		if($("#signup-userId").val() == ""){
+			$form_signup.find('input[id="signup-userId"]').toggleClass('has-error')
+															.next('span')
+															.toggleClass('is-visible');
+			return false;
+		}
+		if($("#signup-password").val() == ""){
+			$form_signup.find('input[id="signup-password"]').toggleClass('has-error')
+															.next('span')
+															.toggleClass('is-visible');
+			return false;
+		}
+		if($("#signup-password-check").val() == ""){
+			$form_signup.find('input[id="signup-password-check"]').toggleClass('has-error')
+															.next('span')
+															.toggleClass('is-visible');
+			return false;
+		}
+		if($("#signup-email").val() == ""){
+			$form_signup.find('input[id="signup-email"]').toggleClass('has-error')
+															.next('span')
+															.toggleClass('is-visible');
+			return false;
+		}
+		if($("#signup-nickname").val() == ""){
+			$form_signup.find('input[id="signup-nickname"]').toggleClass('has-error')
+															.next('span')
+															.toggleClass('is-visible');
+			return false;
+		}
+		if( passwordInvalid || uniqueInvalid){
+			return false;
+		}
+		
+		$("#signUpForm").attr({
+			"method" : "post" ,
+			"action" : "<c:url value='/signUp'/>"
+		}).submit();
+		
+	})
+	
+	/* end Sign Up */
+	
 	/* Kakao Login */
 	
 	$("#kakao-login-btn").click(function(){
@@ -157,61 +350,44 @@ $().ready( function() {
 	   
 	}
 	
-	$("#normalLoginBtn").click(function(){
-		var invalid = false;
-		
-		if($("#memberId").val() == ""){
-			$("#memberId").after("<div> 아이디를 입력하세요. </div>");
-			invalid = true;
-		}
-		if($("#password").val() == ""){
-			$("#password").after("<div> 비밀번호를 입력하세요. </div>");
-			invalid = true;
-		}
-		
-		if(invalid == false){
-			$("#loginForm").attr({
-				"method" : "post",
-				"action" : "<c:url value='/login' />" 
-			}).submit();
-		}
-	})
-	
-	
-	
-	 function onSignIn(googleUser) {
-	       // Useful data for your client-side scripts:
-	       var profile = googleUser.getBasicProfile();
-	       console.log(profile);
-	       console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-
-	       console.log()
-	       // The ID token you need to pass to your backend:
-	       $.post("<c:url value='/googleLogin'/>", profile , function(response){
-	    	   console.log(response);
-	    	   isSuccess = response;
-	       	if(isSuccess == "success"){
-	       		console.log("here we are");
-	       		$form_modal.removeClass('is-visible');
-	       	}
-	       	$(location).attr('href', "<c:url value='/main'/>"); 
-	       });
-	     };
 	     
-	     console.log(sessionStorage.getItem("__USER__"));
-
 	 	$("#logout").click(function(){
-	 		Kakao.Auth.logout();
-	 		$(location).attr('href', "<c:url value='/logout'/>");
-	 	})
-});
+	 		
+	 		if(${not empty sessionScope.__USER__}){
+	 			console.log("session not mepty");
+	 			if(${sessionScope.__USER__.idType eq 2}){
+	 				console.log("kakao Login");
+	 				Kakao.Auth.logout();
+	 			}
+	 			if(${sessionScope.__USER__.idType eq 3}){
+	 				console.log("google Login");
+	 				
+	 			}
+	 			$(location).attr('href', "<c:url value='/logout'/>");
+	 		}
+	 	}); 
 /* end Kakao Login */
- 
+
  /* 
 	start Google Login
  */
-   
+ function onSignIn(googleUser) {
+	 console.log("this call");
+     // Useful data for your client-side scripts:
+     var profile = googleUser.getBasicProfile();
+     console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+     console.log('Full Name: ' + profile.getName());
+     console.log('Given Name: ' + profile.getGivenName());
+     console.log('Family Name: ' + profile.getFamilyName());
+     console.log("Image URL: " + profile.getImageUrl());
+     console.log("Email: " + profile.getEmail());
+
+     // The ID token you need to pass to your backend:
+     var id_token = googleUser.getAuthResponse().id_token;
+     console.log("ID Token: " + id_token);
+   };
     
+});
 
 </script>
 
@@ -230,10 +406,10 @@ $().ready( function() {
 						<li><a id="loginTag" href="#">로그인/회원가입</a></li>
 					</c:if>
 					<c:if test = "${not empty sessionScope.__USER__}">
-						<li class="menu-has-children"><a href="">회원정보</a>
+						<li class="menu-has-children"><a href="#">회원정보</a>
 							<ul>
-								<li><a href="generic.html">냉장고</a></li>
-								<li><a href="elements.html">마이페이지</a></li>
+								<li><a href="#">냉장고</a></li>
+								<li><a href="#">마이페이지</a></li>
 								<li><a id="logout" href="#">로그아웃</a></li>
 							</ul>
 						</li>
@@ -253,20 +429,18 @@ $().ready( function() {
 			</ul>
 
 			<div id="login">
-				<form class="form">
+				<form class="form" id="loginForm">
 					<p class="fieldset">
-						<label class="image-replace email" for="signin-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail"> 
-						<span class="error-message">
-							An account with this email address does not exist!
-						</span>
+						<label class="image-replace username" for="signin-email">User Id</label>
+						<input class="full-width has-padding has-border" name="userId" id="userId" type="text" placeholder="User Id"> 
+						<span class="error-message">아이디를 입력하세요!</span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" id="signin-password" type="password" placeholder="Password">
+						<input class="full-width has-padding has-border" name="password" id="password" type="password" placeholder="Password">
 						<a class="hide-password">Show</a> 
-						<span class="error-message">Wrong password! Try again.</span>
+						<span class="error-message">비밀번호를 입력하세요!</span>
 					</p>
 
 					<p class="fieldset">
@@ -275,7 +449,7 @@ $().ready( function() {
 					</p>
 
 					<p class="fieldset">
-						<input class="full-width" type="submit" value="Login">
+						<input class="full-width" type="button" value="Login" id="normalLoginBtn">
 						<img id="kakao-login-btn" class="full-width" alt="kakao-login-btn" src="<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow.png"/>"
 						 onmouseover="this.src='<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow_ov.png"/>'"
 						 onmouseout="this.src='<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow.png"/>'">
@@ -283,49 +457,58 @@ $().ready( function() {
 					</p>
 				</form>
 
-				<p class="form-bottom-message">
+				<!-- <p class="form-bottom-message">
 					<a>Forgot your password?</a>
-				</p>
+				</p> -->
 			</div>
 
 			<div id="signup">
-				<form class="form">
+				<form class="form" id="signUpForm">
 					<p class="fieldset">
 						<label class="image-replace username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-						<span class="error-message">Your username can only contain	numeric and alphabetic symbols!</span>
+						<input class="full-width has-padding has-border" name="userId" id="signup-userId" type="text" placeholder="User Id">
+						<span class="error-message">아이디를 입력하세요</span>
+						<span class="error-message">아이디가 중복됩니다!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace password" for="signup-password">Password</label>
+						<input class="full-width has-padding has-border" name="password"
+							id="signup-password" type="password" placeholder="Password">
+						<a  class="hide-password">Show</a> 
+						<span class="error-message">비밀번호를 입력하세요!</span>
+						<span class="error-message">비밀번호 확인과 일치하지 않습니다!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace password" for="signup-password">Password</label>
+						<input class="full-width has-padding has-border" name="passwordCheck"
+							id="signup-password-check" type="password" placeholder="Password Check">
+						<a  class="hide-password">Show</a> 
+						<span class="error-message">비밀번호 확인란을 입력하세요!</span>	
+						<span class="error-message">비밀번호와 일치하지 않습니다!</span>
 					</p>
 
 					<p class="fieldset">
 						<label class="image-replace email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail"> 
-						<span class="error-message">Enter a valid email address!</span>
+						<input class="full-width has-padding has-border" name="email" id="signup-email" type="email" placeholder="E-mail"> 
+						<span class="error-message">이메일을 입력하세요!</span>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace email" for="signup-nickname">Nickname</label>
+						<input class="full-width has-padding has-border" name="nickname" id="signup-nickname" type="text" placeholder="Nickname"> 
+						<span class="error-message">닉네임을 입력하세요!</span>
 					</p>
 
-					<p class="fieldset">
-						<label class="image-replace password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border"
-							id="signup-password" type="password" placeholder="Password">
-						<a  class="hide-password">Show</a> 
-						<span class="error-message">Your password has to be at least 6 characters long!</span>
-					</p>
-
-					<p class="fieldset">
-						<label class="image-replace password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border"
-							id="signup-password-check" type="password" placeholder="Password Check">
-						<a  class="hide-password">Show</a> 
-						<span class="error-message">Your password has to be at least 6 characters long!</span>
-					</p>
-
-					<p class="fieldset">
+					<!-- <p class="fieldset">
 						<input type="checkbox" id="accept-terms"> 
 						<label for="accept-terms">I agree to the 
 						<a class="accept-terms">Terms</a></label>
-					</p>
+					</p> -->
 
 					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Create account">
+						<input class="full-width has-padding" type="button" id="signUpBtn" value="Create account">
 					</p>
 				</form>
 

@@ -1,5 +1,8 @@
 package com.solomong.member.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,8 +10,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.solomong.member.constants.Member;
@@ -34,6 +39,49 @@ public class MemberController {
 		return "member/mypage";
 	}
 	
+	@RequestMapping(value="/normalLogin", method=RequestMethod.POST)
+	public String doNormalLogin(@ModelAttribute MemberVO memberVO, HttpSession session) {
+		memberVO.setIdType(1);
+		MemberVO member = memberService.readMember(memberVO);
+		if(member == null) {
+			session.setAttribute("loginResult", "fail");
+			return "redirect:/main";
+		}
+		else{
+			session.setAttribute("loginResult", "success");
+			session.setAttribute(Member.USER, member);
+			return "redirect:/main";
+		}
+	}
+	
+	@RequestMapping(value="/signUp", method=RequestMethod.POST)
+	public String doSignUp(@ModelAttribute MemberVO memberVO, HttpSession session) {
+		if( memberService.registNormalMember(memberVO) ) {
+			return "redirect:/main";
+		}
+		return "redirect:/main";
+	}
+	
+	@RequestMapping("/api/isExist/userId")
+	@ResponseBody
+	public Map<String, Object> checkUniqueUserId(@RequestParam String userId){
+		boolean isExist = memberService.isExistUserId(userId);
+		
+		Map<String, Object> response = new HashMap<>();
+		response.put("isExist", isExist);
+		return response;
+	}
+	
+	@RequestMapping("/api/isExist/nickname")
+	@ResponseBody
+	public Map<String, Object> checkUniqueNickname(@RequestParam String nickname){
+		boolean isExist = memberService.isExistNickname(nickname);
+		
+		Map<String, Object> response = new HashMap<>();
+		response.put("isExist", isExist);
+		return response;
+	}
+	
 	@RequestMapping(value="/kakaoLogin", method=RequestMethod.POST)
 	@ResponseBody
 	public String doKakaoLogin(HttpServletRequest request, HttpSession session) {
@@ -49,8 +97,8 @@ public class MemberController {
 			memberVO.setIdType(2);
 			member = memberService.readMember(memberVO); 
 			if( member != null) {
+				System.out.println(member.getIdType());
 				session.setAttribute( Member.USER, member);
-				System.out.println(member.toString());
 				return "success";
 			}else {
 				kakaoMemberVO.setId(Integer.parseInt(jsonObject.get("id").toString()));
@@ -71,7 +119,7 @@ public class MemberController {
 				if(memberService.registKakaoMember(kakaoMemberVO)) {
 					member = memberService.readMember(memberVO);
 					System.out.println(member.getEmail());
-					System.out.println(member.getMemberId());
+					System.out.println(member.getIdType());
 					session.setAttribute( Member.USER, member);
 					return "success";
 				}else {
@@ -86,6 +134,7 @@ public class MemberController {
 	@RequestMapping(value="/googleLogin", method=RequestMethod.POST)
 	@ResponseBody
 	public String doGoogleLogin(HttpServletRequest request, HttpSession session) {
+		System.out.println("call googleLogin");
 		GoogleMemberVO googleMemberVO = new GoogleMemberVO();
 		MemberVO memberVO = new MemberVO();
 		MemberVO member = new MemberVO();
