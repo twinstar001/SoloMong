@@ -5,11 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.solomong.Util.location.IpToWeather;
 import com.solomong.history.service.HistoryService;
 import com.solomong.history.vo.History;
 import com.solomong.history.vo.HistoryVO;
+import com.solomong.member.constants.Member;
 import com.solomong.member.vo.MemberVO;
+import com.solomong.Util.location.IpToWeather;
 
 public class locationInterceptor extends HandlerInterceptorAdapter {
 	
@@ -51,9 +52,9 @@ public class locationInterceptor extends HandlerInterceptorAdapter {
 		HistoryVO history = new HistoryVO();
 		history.setReqType(History.ReqType.VIEW);
 		history.setIp(request.getRemoteAddr());
-		if(request.getAttribute("MEMBER") != null) {
-			MemberVO member = (MemberVO) request.getAttribute("MEMBER");
-			history.setUserId( member.getUserId() );
+		if(request.getAttribute(Member.USER) != null) {
+			MemberVO member = (MemberVO) request.getAttribute(Member.USER);
+			history.setUserId( member.getMemberId() );
 			history.setIdType( member.getIdType() );
 		}
 		if(referer != null) {

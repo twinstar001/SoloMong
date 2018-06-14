@@ -12,11 +12,8 @@
 		<typeAlias type="com.solomong.member.vo.GoogleMemberVO" alias="GoogleMemberVO"/>
 		<typeAlias type="com.solomong.member.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
-<<<<<<< HEAD
 		<typeAlias type="com.solomong.history.vo.HistoryVO" alias="HistoryVO"/>
-=======
 		<typeAlias type="com.solomong.myrecipe.vo.MyrecipeVO" alias="MyrecipeVO"/>
->>>>>>> master
 	</typeAliases>
 
 	<mappers>
@@ -25,12 +22,8 @@
 		<mapper resource="com/solomong/recipe/dao/sql/ingredient.xml"/>
 		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
 		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
-<<<<<<< HEAD
 		<mapper resource="com/solomong/history/dao/sql/HistoryDao.xml"/>
-	</mappers>
-=======
 		<mapper resource="com/solomong/myrecipe/dao/sql/myrecipeDao.xml"/>
-	</typeAliases>
->>>>>>> master
+	</mappers>
 
 </configuration>
