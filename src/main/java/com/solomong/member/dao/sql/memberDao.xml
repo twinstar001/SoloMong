@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- interface의 이름을 적어준다 -->
+<mapper namespace = "MemberDao">
+	
+	<select id="selectMember" parameterType="MemberVO" resultType="MemberVO">
+		SELECT	MEMBER_ID memberId
+				, ID_TYPE idType
+				, USER_ID userId
+				, NICKNAME
+				, EMAIL
+				, BIRTHDAY
+				, GENDER
+				, PROFILE_IMAGE profileImage
+		FROM	MEMBER
+		WHERE	MEMBER.USER_ID = #{userId}
+		AND		MEMBER.ID_TYPE = #{idType}
+		
+	</select>
+
+	<insert id="insertKakaoMember" parameterType="KakaoMemberVO">
+		INSERT	INTO
+		MEMBER(
+				MEMBER_ID
+				, ID_TYPE
+				, USER_ID
+				, NICKNAME
+				<if test="email != null and email != '' ">
+				, EMAIL
+				</if>
+				<if test="birthday != null and birthday != '' ">
+				, BIRTHDAY
+				</if>
+				<if test="gender != null and gender != '' ">
+				, GENDER
+				</if>
+				<if test="profileImage != null and profileImage != '' ">
+				, PROFILE_IMAGE
+				</if>
+		)
+		VALUES(
+				MEMBER_ID_SEQ.NEXTVAL
+				, 2
+				, #{id}
+				, #{nickname}
+				<if test="email != null and email != '' ">
+				, #{email}
+				</if>
+				<if test="birthday != null and birthday != '' ">
+				, #{birthday}
+				</if>
+				<if test="gender != null and gender != '' ">
+				, #{gender}
+				</if>
+				<if test="profileImage != null and profileImage != '' ">
+				, #{profileImage}
+				</if>
+		)
+	</insert>
+	
+	<insert id="insertGoogleMember" parameterType="GoogleMemberVO" >
+		INSERT	INTO
+		MEMBER(
+				MEMBER_ID
+				, ID_TYPE
+				, USER_ID
+				, NICKNAME
+				, EMAIL
+				, PROFILE_IMAGE
+		)
+		VALUES(
+				MEMBER_ID_SEQ.NEXTVAL
+				, 3
+				, #{id}
+				, #{name}
+				, #{email}
+				, #{imageURL}
+		)
+	</insert>
+</mapper>

@@ -11,12 +11,18 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta charset="UTF-8">
+<<<<<<< HEAD
 
 
 <link rel="stylesheet" href="static/loginRegist/css/loginRegist.css">
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
+=======
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="720597646651-v2s49mjj7lrqjdf3f89k2fvlmdgam02h.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+>>>>>>> master
 <script type="text/javascript">
 $().ready( function() {
 	var $form_modal = $('.user-modal'), 
@@ -120,19 +126,38 @@ $().ready( function() {
 
 	});
 		
+	/* Kakao Login */
+	
 	$("#kakao-login-btn").click(function(){
 		loginWithKakao();
 	})
 		
 	//사용할 앱의 JavaScript 키를 설정해 주세요.
-	 Kakao.init('801fb68ee415f57ecbb8729f5d28e707'); 
+	 Kakao.init('ded3361d7ed902be44f4d01f326b83af'); 
 
+	var isSuccess;
 	function loginWithKakao() {
 	    // 로그인 창을 띄웁니다.
 	    Kakao.Auth.login({
 	      success: function(authObj) {
 	    	  console.log(authObj);
-	    	  $(location).attr('href',"<c:url value='/kakaoLogin'/>");
+	    	  Kakao.API.request({
+	    		  url: '/v2/user/me',
+	              success: function(res) {
+	                $.post("<c:url value='/kakaoLogin'/>",{ res : JSON.stringify(res)} , function(response){
+	                	console.log(response);
+	                	isSuccess = response;
+	                	if(isSuccess == "success"){
+	                		console.log("here we are");
+	                		$form_modal.removeClass('is-visible');
+	                	$(location).attr('href', "<c:url value='/main'/>");
+	                	}
+	                });
+	              },
+	              fail: function(error) {
+	                alert(JSON.stringify(error));
+	              }
+	    	  })
 	      },
 	      fail: function(err) {
 	        alert(JSON.stringify(err));
@@ -160,8 +185,42 @@ $().ready( function() {
 			}).submit();
 		}
 	})
-});
+	
+	
+	
+	 function onSignIn(googleUser) {
+	       // Useful data for your client-side scripts:
+	       var profile = googleUser.getBasicProfile();
+	       console.log(profile);
+	       console.log("ID: " + profile.getId()); // Don't send this directly to your server!
 
+	       console.log()
+	       // The ID token you need to pass to your backend:
+	       $.post("<c:url value='/googleLogin'/>", profile , function(response){
+	    	   console.log(response);
+	    	   isSuccess = response;
+	       	if(isSuccess == "success"){
+	       		console.log("here we are");
+	       		$form_modal.removeClass('is-visible');
+	       	}
+	       	$(location).attr('href', "<c:url value='/main'/>"); 
+	       });
+	     };
+	     
+	     console.log(sessionStorage.getItem("__USER__"));
+
+	 	$("#logout").click(function(){
+	 		Kakao.Auth.logout();
+	 		$(location).attr('href', "<c:url value='/logout'/>");
+	 	})
+});
+/* end Kakao Login */
+ 
+ /* 
+	start Google Login
+ */
+   
+    
 
 </script>
 
@@ -190,7 +249,7 @@ $().ready( function() {
 							<ul>
 								<li><a href="generic.html">냉장고</a></li>
 								<li><a href="elements.html">마이페이지</a></li>
-								<li><a href="elements.html">로그아웃</a></li>
+								<li><a id="logout" href="#">로그아웃</a></li>
 							</ul>
 						</li>
 					</c:if>
@@ -235,6 +294,7 @@ $().ready( function() {
 						<img id="kakao-login-btn" class="full-width" alt="kakao-login-btn" src="<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow.png"/>"
 						 onmouseover="this.src='<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow_ov.png"/>'"
 						 onmouseout="this.src='<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow.png"/>'">
+						 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 					</p>
 				</form>
 

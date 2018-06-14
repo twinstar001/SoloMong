@@ -10,9 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< HEAD
 import com.solomong.Util.location.IpToWeather;
 import com.solomong.history.service.HistoryService;
 import com.solomong.history.vo.HistoryVO;
+=======
+import com.solomong.member.constants.Member;
+import com.solomong.member.vo.MemberVO;
+>>>>>>> master
 
 @Controller
 public class testController {
@@ -23,11 +28,19 @@ public class testController {
 	}
 	
 	@RequestMapping("/main")
+<<<<<<< HEAD
 	public String viewTest(HttpSession session, HttpServletRequest request,
 			@RequestAttribute HistoryVO history) throws IOException {
 		
 //		history.
 		
+=======
+	public String viewTest(HttpSession session) {
+		MemberVO member = (MemberVO) session.getAttribute(Member.USER);
+		if(member != null) {
+			System.out.println( member.getEmail());
+		}
+>>>>>>> master
 		return "main";
 	}
 	

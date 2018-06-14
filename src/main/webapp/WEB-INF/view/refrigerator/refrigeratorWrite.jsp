@@ -1,43 +1,80 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<script type="text/javascript">
+
+	$().ready(function(){
+		$("#refrigeratorBtn").click(function(){
+			var value = $("#ingredient").val();		
+			if(value != ""){
+				$.post("<c:url value="/api/exists/ingredient"/>", {
+					name:value
+				},function(response){
+					console.log(response.response);
+					console.log(value);
+					if(response.response){
+						var name = $("#ingredient").val();		
+						var date = $("#exdate").val();
+						window.opener.sendForm(name, date);
+						
+						self.close();
+		
+					}
+					else{
+						alert("ì˜¬ë°”ë¥´ì§€ ì•Šì€ ì¬ë£Œ ì´ë¦„ì…ë‹ˆë‹¤. ì£¼ì–´ì§„ ëª©ë¡ì—ì„œ ì„ íƒí•´ì£¼ì„¸ìš”.");
+					}
+				});
+			}
+			else{
+				alert("ì¬ë£ŒëŠ” ë°˜ë“œì‹œ ì…ë ¥í•´ì•¼ í•©ë‹ˆë‹¤.");
+			}
+		});
+	});
+
+</script>
 </head>
 <body>
 	<form:form modelAttribute="refrigeratorForm">
 		<div>
-			<select name="ingredientType">
-				<option value="">Àç·áÀÇ Å¸ÀÔÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.</option>
-				<option value="1">À°·ù</option>
-				<option value="2">ÇØ¹°·ù</option>
-				<option value="3">°Ç¾î¹°·ù</option>
-				<option value="4">°î·ù</option>
-				<option value="5">Äá/°ß°ú·ù</option>
-				<option value="6">Ã¤¼Ò·ù</option>
-				<option value="7">¹ö¼¸·ù</option>
-				<option value="8">¹Ğ°¡·ç</option>
-				<option value="9">°¡°ø½ÄÇ°·ù</option>
-				<option value="10">½Ò</option>
-				<option value="11">°úÀÏ·ù</option>
-				<option value="12">´Ş°¿/À¯Á¦Ç°·ù</option>
-				<option value="13">±âÅ¸</option>
+			<select name="ingredientType" id="ingredientType">
+				<option value="">ì¬ë£Œì˜ íƒ€ì…ì„ ì„ íƒí•´ì£¼ì„¸ìš”.</option>
+				<option value="1">ìœ¡ë¥˜</option>
+				<option value="2">í•´ë¬¼ë¥˜</option>
+				<option value="3">ê±´ì–´ë¬¼ë¥˜</option>
+				<option value="4">ê³¡ë¥˜</option>
+				<option value="5">ì½©/ê²¬ê³¼ë¥˜</option>
+				<option value="6">ì±„ì†Œë¥˜</option>
+				<option value="7">ë²„ì„¯ë¥˜</option>
+				<option value="8">ë°€ê°€ë£¨</option>
+				<option value="9">ê°€ê³µì‹í’ˆë¥˜</option>
+				<option value="10">ìŒ€</option>
+				<option value="11">ê³¼ì¼ë¥˜</option>
+				<option value="12">ë‹¬ê±€/ìœ ì œí’ˆë¥˜</option>
+				<option value="13">ê¸°íƒ€</option>
 			</select>
 		</div>
 		<div>
-			<label for="default">Àç·á¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä</label>
-		 	<input type="text" id="default" list="ingredients" placeholder="ex)°¨ÀÚ">
+			<label for="default">ì¬ë£Œë¥¼ ì„ íƒí•´ ì£¼ì„¸ìš”</label>
+		 	<input id="ingredient" list="ingredients" name="ingredientName" placeholder="ex)ê°ì">
 			<datalist id="ingredients">
-		    	<!-- ¿©±â¿¡ DB¿¡¼­ Àç·á µ¥ÀÌÅÍ ºÒ·¯¿Ã°Í -->
+				<c:forEach items="${ingredients}" var="ing">
+					<option value="${ing.ingredientName}">
+				</c:forEach>
+		    	
 		 	</datalist>
 		</div>
 		<div>
-			À¯Åë±âÇÑ<input type="date" />
+			ìœ í†µê¸°í•œ<input type="date" name="refrigeratorExpirationDate" id="exdate"/>
 		</div>
+		<div><input type="button" value="ì¶”ê°€" id="refrigeratorBtn"></div>
 	</form:form>
 </body>
 </html>

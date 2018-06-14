@@ -11,9 +11,9 @@
 	<bean	id="dataSource"
 			class="org.apache.commons.dbcp.BasicDataSource">
 		<property	name="driverClassName" value="oracle.jdbc.driver.OracleDriver"	/>
-		<property	name="url"	value="jdbc:oracle:thin:@192.168.201.16:1521:XE" />
-		<property	name="username" value="SOLOMONG" />
-		<property	name="password"	value="SOLOMONG" />
+		<property	name="url"	value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property	name="username" value="solo" />
+		<property	name="password"	value="solo" />
 	</bean>
 	
 	<!-- MyBatis 설정 -->
@@ -43,6 +43,7 @@
 			<tx:method name="read*" rollback-for="RuntimeException"/>
 			<tx:method name="update*" rollback-for="RuntimeException"/>
 			<tx:method name="delete*" rollback-for="RuntimeException"/>
+			<tx:method name="icrement*" rollback-for="RuntimeException"/>
 		</tx:attributes>
 	</tx:advice>
 	
