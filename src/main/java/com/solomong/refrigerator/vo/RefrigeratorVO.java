@@ -1,6 +1,5 @@
 package com.solomong.refrigerator.vo;
 
-import com.solomong.ingredient.vo.IngredientVO;
 
 public class RefrigeratorVO {
 
@@ -9,6 +8,8 @@ public class RefrigeratorVO {
 	private String refrigeratorUseByDate;
 	private String refrigeratorExpirationDate;
 	private int memberId;
+	private int ingredientId;
+	private String ingredientName;
 	
 
 	public int getRefrigeratorId() {
@@ -49,6 +50,22 @@ public class RefrigeratorVO {
 
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
+	}
+
+	public int getIngredientId() {
+		return ingredientId;
+	}
+
+	public void setIngredientId(int ingredientId) {
+		this.ingredientId = ingredientId;
+	}
+
+	public String getIngredientName() {
+		return ingredientName;
+	}
+
+	public void setIngredientName(String ingredientName) {
+		this.ingredientName = ingredientName;
 	}
 
 }

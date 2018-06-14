@@ -5,6 +5,7 @@
 
 	<bean	id="testController"
 			class="com.solomong.testController">
+			<property name="historyService" ref="historyService"></property>
 	</bean>
 	
 	<bean	id="MemberController"
@@ -12,9 +13,10 @@
 		<property name="memberService" ref="memberService" />
 	</bean>
 	
-	<bean	id="RefigeratorController"
-			class="com.solomong.refrigerator.controller.RefrigeratorController">
-			
+	<bean	id="RefrigeratorController"
+			class="com.solomong.refrigerator.web.RefrigeratorController">
+		<property name="refrigeratorService" ref="refrigeratorService"></property>
+		<property name="ingredientService" ref="ingredientService"></property>
 	</bean>
 	
 	<bean	id="RecipeController"
@@ -25,6 +27,12 @@
 	<bean	id="CommunityController"
 			class="com.solomong.community.web.CommunityController">
 			<property name="communityService" ref="communityService"></property>
+
+	</bean>
+	
+	<bean	id="MyRecipeController"
+			class="com.solomong.myrecipe.web.MyrecipeController">
+			<property name="myrecipeService" ref="myrecipeService"></property> 
 	
 	</bean>
 

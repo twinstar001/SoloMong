@@ -11,6 +11,9 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta charset="UTF-8">
+<link rel="stylesheet" href="static/loginRegist/css/loginRegist.css">
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="720597646651-v2s49mjj7lrqjdf3f89k2fvlmdgam02h.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
@@ -395,7 +398,13 @@ $().ready( function() {
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
+				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="솔로몽 로고" /></a>
+			</div>
+			<div style="left:0;">
+				<c:if test="${not empty sessionScope.SOLO_LOCATION}">
+					<img src='<c:url value="/static/main/img"/>/${sessionScope.SOLO_LOCATION.weather}.png' height="30px" width="30px" alt="${sessionScope.SOLO_LOCATION.weather}"/>
+					 ${sessionScope.SOLO_LOCATION.location}
+				</c:if>
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">

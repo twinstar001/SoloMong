@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MyrecipeDao">
+
+	<insert id="insertTitle" parameterType="MyrecipeVO">
+		INSERT INTO FOOD_TITLE (
+			TITLE
+		) VALUES (
+			#{title}
+		)
+	</insert>
+	
+	<insert id="insertIntroduction" parameterType="MyrecipeVO">
+		INSERT INTO FOOD_INTRODUCTION (
+			INTRODUCTION
+		) VALUES ( 
+			#{introduction}
+		)
+	</insert>
+	
+	<insert id="insertIngredient" parameterType="MyrecipeVO">
+		INSERT INTO FOOD_INGREDIENT (
+			 INGREDIENT_NAME
+			, INGREDIENT_QUANTITY
+		) VALUES (
+			 #{ingredientName}  
+			, #{ingredientQuantity}
+		)
+	</insert>
+	
+	<insert id="insertStep" parameterType="MyrecipeVO">
+		INSERT INTO FOOD_STEP (
+			STEP
+		) VALUES (
+			#{step}
+		)
+	</insert>
+	
+	<insert id="insertTip" parameterType="MyrecipeVO">
+		INSERT INTO FOOD_TIP (
+			TIP
+		) VALUES (
+			#{tip}
+		)
+	</insert>
+	
+	<insert id="insertImage" parameterType="MyrecipeVO">
+		INSERT INTO FOOD_IMAGE (
+			IMAGE
+			, ID
+		) VALUES (
+			#{image}
+			, IMAGE_ID_SEQ.NEXTVAL
+		)
+		
+	</insert>
+	
+	<select id="selectAll" resultType="MyrecipeVO">
+		SELECT	INGREDIENT_NAME ingredientName
+				, INGREDIENT_QUANTITY ingredientQuantity
+		FROM	FOOD_INGREDIENT
+	</select>
+	
+	<select id="selectImage" resultType="MyrecipeVO">
+		SELECT	IMAGE
+				, ID imageId
+		FROM	FOOD_IMAGE
+	</select>
+	
+	<select id="selectOne" resultType="MyrecipeVO" parameterType="_int">
+		SELECT	IMAGE image 
+				, ID imageId
+		FROM	FOOD_IMAGE
+		WHERE	ID = #{imageId}
+	
+	</select>
+	
+	
+</mapper>
