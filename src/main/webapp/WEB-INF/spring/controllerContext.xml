@@ -5,6 +5,7 @@
 
 	<bean	id="testController"
 			class="com.solomong.testController">
+			<property name="historyService" ref="historyService"></property>
 	</bean>
 	
 	<bean	id="MemberController"
@@ -25,7 +26,6 @@
 	<bean	id="CommunityController"
 			class="com.solomong.community.web.CommunityController">
 			<property name="communityService" ref="communityService"></property>
-	
 	</bean>
 
 </beans>

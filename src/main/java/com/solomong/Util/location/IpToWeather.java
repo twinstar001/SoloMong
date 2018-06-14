@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Location {
+public class IpToWeather {
 	private String location;
 	private String ipAddr;
 	private int gridX;
@@ -53,8 +53,10 @@ public class Location {
 	}
 	
 	public void setting(String ip) throws IOException {
-		System.out.println("jsoup 동작");
 		this.ipAddr = ip;
+		if(this.ipAddr.equals("0:0:0:0:0:0:0:1")) {
+			this.ipAddr="192.168.201.18";
+		}
 		IpForGPS(ip);
 		locationWeather(this.gridX, this.gridY);
 	}
@@ -127,11 +129,25 @@ public class Location {
     public void locationWeather(int gridX, int gridY) throws IOException {
     	Document doc = Jsoup.connect("http://www.kma.go.kr/wid/queryDFS.jsp?gridx="+ gridX +"&gridy="+gridY).get();
     	
-    	Element searchDiv = doc.select("data").get(0);
-    	
-    	this.tmp= searchDiv.select("temp").get(0).text();
-    	
-    	this.weather= searchDiv.select("wfKor").text();
+    	if( doc != null ) {
+	    	Element searchDiv = doc.select("data").get(0);
+	    	if( searchDiv.select("temp").get(0).text() != null) {
+	    		this.tmp= searchDiv.select("temp").get(0).text();
+	    	}else {
+	    		this.tmp = null;
+	    	}
+	    	if( searchDiv.select("wfKor").text() != null ) {
+	    		this.weather= searchDiv.select("wfKor").text();
+	    	}else if( searchDiv.select("wfEn").text() != null ) {
+	    		this.weather= searchDiv.select("wfEn").text();
+	    	}
+	    	else{
+	    		this.weather= null;
+	    	}
+    	}else {
+    		this.tmp = null;
+    		this.weather= null;
+    	}
     }
     
 }

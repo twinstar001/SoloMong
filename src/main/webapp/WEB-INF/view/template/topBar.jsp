@@ -169,7 +169,13 @@ $().ready( function() {
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="" title="" /></a>
+				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="솔로몽 로고" /></a>
+			</div>
+			<div style="left:0;">
+				<c:if test="${not empty sessionScope.SOLO_LOCATION}">
+					<img src='<c:url value="/static/main/img"/>/${sessionScope.SOLO_LOCATION.weather}.png' height="30px" width="30px" alt="${sessionScope.SOLO_LOCATION.weather}"/>
+					 ${sessionScope.SOLO_LOCATION.location}
+				</c:if>
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">

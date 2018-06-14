@@ -7,27 +7,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.solomong.Util.location.Location;
+import com.solomong.Util.location.IpToWeather;
+import com.solomong.history.service.HistoryService;
+import com.solomong.history.vo.HistoryVO;
 
 @Controller
 public class testController {
+	private HistoryService historyService;
+	
+	public void setHistoryService(HistoryService historyService) {
+		this.historyService = historyService;
+	}
 	
 	@RequestMapping("/main")
-	public String viewTest(HttpSession session, HttpServletRequest request) throws IOException {
-		Location locationVO = new Location();
+	public String viewTest(HttpSession session, HttpServletRequest request,
+			@RequestAttribute HistoryVO history) throws IOException {
 		
-		if (session.getAttribute("SOLO_LOCATION") != null) {
-			locationVO.setting( request.getRemoteAddr() );
-			session.setAttribute("SOLO_LOCATION", locationVO);
-		}else {
-			locationVO.setting( request.getRemoteAddr() );
-		}
-		
-		System.out.println( "접속위치: "+ locationVO.getLocation() );
-		System.out.println( "접속지 날씨: "+ locationVO.getWeather() );
-		System.out.println( "접속지 온도: "+ locationVO.getTmp() );
+//		history.
 		
 		return "main";
 	}
