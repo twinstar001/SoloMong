@@ -9,7 +9,7 @@
 	
 	<bean	id="MemberController"
 			class="com.solomong.member.controller.MemberController">
-			
+		<property name="memberService" ref="memberService" />
 	</bean>
 	
 	<bean	id="RefigeratorController"

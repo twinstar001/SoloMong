@@ -4,12 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
 	<typeAliases>
+		<typeAlias type="com.solomong.member.vo.KakaoMemberVO" alias="KakaoMemberVO"/>
+		<typeAlias type="com.solomong.member.vo.GoogleMemberVO" alias="GoogleMemberVO"/>
+		<typeAlias type="com.solomong.member.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
 		<typeAlias type="com.solomong.myrecipe.vo.MyrecipeVO" alias="MyrecipeVO"/>
 	</typeAliases>
 	
 	<mappers>
+		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
 		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
 		<mapper resource="com/solomong/myrecipe/dao/sql/myrecipeDao.xml"/>
 	</mappers>
