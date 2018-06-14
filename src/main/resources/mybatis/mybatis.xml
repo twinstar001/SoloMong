@@ -6,9 +6,12 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
+		<typeAlias type="com.solomong.myrecipe.vo.MyrecipeVO" alias="MyrecipeVO"/>
 	</typeAliases>
+	
 	<mappers>
 		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
+		<mapper resource="com/solomong/myrecipe/dao/sql/myrecipeDao.xml"/>
 	</mappers>
 
 </configuration>

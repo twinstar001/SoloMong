@@ -25,6 +25,11 @@
 	<bean	id="CommunityController"
 			class="com.solomong.community.web.CommunityController">
 			<property name="communityService" ref="communityService"></property>
+	</bean>
+	
+	<bean	id="MyRecipeController"
+			class="com.solomong.myrecipe.web.MyrecipeController">
+			<property name="myrecipeService" ref="myrecipeService"></property> 
 	
 	</bean>
 
