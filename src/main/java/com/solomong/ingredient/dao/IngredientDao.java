@@ -4,7 +4,10 @@ import java.util.List;
 
 import com.solomong.ingredient.vo.IngredientVO;
 
-public class IngredientDao {
-	
-	public List<IngredientVO> ingredientNameSelect;
+
+public interface IngredientDao {
+	public List<IngredientVO> selectIngredientNameByType(String type);
+	public List<IngredientVO> selectIngredientNameAll();
+	public int selectIngredientName(String name);
+	public int selectIngredientUsebyPeriod(int name);
 }

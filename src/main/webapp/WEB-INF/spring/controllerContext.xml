@@ -12,9 +12,10 @@
 			
 	</bean>
 	
-	<bean	id="RefigeratorController"
-			class="com.solomong.refrigerator.controller.RefrigeratorController">
-			
+	<bean	id="RefrigeratorController"
+			class="com.solomong.refrigerator.web.RefrigeratorController">
+		<property name="refrigeratorService" ref="refrigeratorService"></property>
+		<property name="ingredientService" ref="ingredientService"></property>
 	</bean>
 	
 	<bean	id="RecipeController"
