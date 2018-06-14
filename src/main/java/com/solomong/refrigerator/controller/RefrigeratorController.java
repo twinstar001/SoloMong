@@ -7,13 +7,14 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RefrigeratorController {
 	
 	@RequestMapping("/refrigerator")
-	public ModelAndView RefrigeratorCalendar() {
+	public ModelAndView refrigeratorCalendar() {
 		ModelAndView view = new ModelAndView();
 		
 		Map<String, String> schedules = new HashMap<>();
@@ -26,6 +27,20 @@ public class RefrigeratorController {
 		view.setViewName("/refrigerator/refrigeratorSchedule");
 	
 		return view;
+	}
+	
+	@RequestMapping(value="/refrigerator/write", method=RequestMethod.GET)
+	public String viewRefrigeratorWrite() {
+		
+		return "refrigerator/refrigeratorWrite";
+	}
+	
+	@RequestMapping(value="/refrigerator/write", method=RequestMethod.POST)
+	public String doRefrigeratorWrite() {
+		
+		
+		
+		return "redirect:/refrigerator";
 	}
 	
 

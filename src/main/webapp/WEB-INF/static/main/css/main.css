@@ -2246,9 +2246,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
 	background: url(../img/header-bg.jpg) right;
 	background-size: cover;
-	height : 700px;
-	width : 90%;
-	margin : auto;
+	height : 700px; 
+	width : 1200px; 
+	margin : 0 auto;
 	
 }
 
@@ -2352,10 +2352,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .video-area {
-	background: url(../img/video-bg.jpg) center;
+	background: url(../img/video-bg.jpg) center ; 
 	background-size: cover;
-	padding: 200px 0px;
-	text-align: center
+	height : 700px;
+	width : 1100px; 
+	margin : 0 auto;
+	
 }
 
 .feature-section {

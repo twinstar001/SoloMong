@@ -40,7 +40,7 @@
 
 <body>
 <header>
-	<div style="background-color:red; height:100px;">상단바</div>  <!-- 상단바 위치/ include 시키기 -->
+	<jsp:include page="/WEB-INF/view/template/topBar.jsp"/> <!-- 상단바 위치/ include 시키기 -->
 </header>
 	<div style="width:1100px; margin-left:130px;" >
 		<div style="height:150px;">
