@@ -2,17 +2,23 @@ package com.solomong;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.solomong.member.constants.Member;
+import com.solomong.member.vo.MemberVO;
 
 @Controller
 public class testController {
 	
 	@RequestMapping("/main")
-	public String viewTest() {
+	public String viewTest(HttpSession session) {
+		MemberVO member = (MemberVO) session.getAttribute(Member.USER);
+		if(member != null) {
+			System.out.println( member.getEmail());
+		}
 		return "main";
 	}
 	@RequestMapping("/modalTest")
