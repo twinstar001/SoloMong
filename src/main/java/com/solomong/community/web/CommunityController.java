@@ -41,6 +41,17 @@ public class CommunityController {
 			
 			return view;
 	}
+	@RequestMapping("/modalTest")
+	public ModelAndView modal() {
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("mainModal");
+		
+		List<CommunityVO> communityList = communityService.getAll();
+		view.addObject("communityList", communityList);
+		
+		return view;
+	}
 	
 	
 	@RequestMapping(value="/community/write", method = RequestMethod.GET)

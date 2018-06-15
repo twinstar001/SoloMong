@@ -45,6 +45,7 @@
 	<!-- 상단바 위치/ include 시키기 -->
 </header>
 <form:form modelAttribute="writeForm">
+	
 	<div style="width:1100px; margin-left:130px; margin:0 auto;" >
 		<div style="background-color:#8a6e8e; height:80px;">${myrecipe.title}</div><!-- 
 	 --><div style="background-color:#5f2255; height:20px; margin-bottom:50px;">
@@ -82,8 +83,8 @@
 								 	-->
 								<c:forEach items="${myrecipeList2}" var="myrecipe">
 								 	<img src="<c:url value="/get/${myrecipe.imageId}"/>" style=" margin-bottom: 50px; width:290px;"/>
-								 	
 								</c:forEach>
+								 	
 						<%-- 		 	
 							<div style="width:290px;" >${myrecipe.file}</div>
 						 --%>
@@ -118,10 +119,12 @@
 					<div style="width:309px; margin-top:14px; background-color:#dad5d5;" >
 						<span>재료</span>
 						<br>
-						<c:forEach items="${myrecipeList}" var="myrecipe">
-							<div style="width:154px; float:left; " class="tt">${myrecipe.ingredientName}</div>
-							<div style="width:154px; float:left; " class="tt">${myrecipe.ingredientQuantity}</div>
+					<c:forEach items="${myrecipeList}" var="myrecipe2">
+							<div style="width:154px; float:left; " class="tt">${myrecipe2.ingredientName}</div>
+							<div style="width:154px; float:left; " class="tt">${myrecipe2.ingredientQuantity}</div>
+							
 						</c:forEach>
+							
 					</div>
 				
 		<!-- 			<div style="width:309px; margin-top:14px; background-color:#dad5d5;" >

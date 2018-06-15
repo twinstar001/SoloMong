@@ -185,7 +185,6 @@
 					<div style="font-size:20pt; padding:12px;">
 						Step1 
 					</div>
-			
 				</div><!-- 
 			 --><div style="width:600px; height:160px;  display:inline-block;">
 			 

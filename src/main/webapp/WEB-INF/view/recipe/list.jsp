@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
+<html>
 <style>
 .div1{  /*  레시피 이미지 + 제목*/
 	display:inline-block;
@@ -32,7 +33,6 @@
 	vertical-align:top;
 }
 </style>
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>

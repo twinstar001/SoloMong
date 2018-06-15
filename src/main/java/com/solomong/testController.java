@@ -21,11 +21,12 @@ public class testController {
 		}
 		return "main";
 	}
+	/*
 	@RequestMapping("/modalTest")
 	public String modalTest() {
 		return "mainModal";
 	}
-	
+	*/
 	@RequestMapping("/carouselTest")
 	public String carouselTest() {
 		return "carouselTest";
