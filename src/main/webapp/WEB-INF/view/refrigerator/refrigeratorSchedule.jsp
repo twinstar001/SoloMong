@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/static/fullcalendar-3.9.0/fullcalendar.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/static/fullcalendar-3.9.0/fullcalendar.min.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/static/fullcalendar-3.9.0/fullcalendar.min.css"/>"/>
-
+<jsp:include page="/WEB-INF/view/template/topBar.jsp"></jsp:include>
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/static/fullcalendar-3.9.0/lib/moment.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/static/fullcalendar-3.9.0/fullcalendar.min.js"/>"></script>

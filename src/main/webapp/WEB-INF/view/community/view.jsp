@@ -27,6 +27,7 @@
 
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/template/topBar.jsp"></jsp:include>
 	<div  style="width:1000px; height:600px; margin:0 auto; border: 1px solid #dddddd; "  >
 		<table class="table table-striped" >
 				<thead>

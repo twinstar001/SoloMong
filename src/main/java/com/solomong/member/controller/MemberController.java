@@ -45,12 +45,12 @@ public class MemberController {
 		MemberVO member = memberService.readMember(memberVO);
 		if(member == null) {
 			session.setAttribute("loginResult", "fail");
-			return "redirect:/main";
+			return "redirect:/modalTest";
 		}
 		else{
 			session.setAttribute("loginResult", "success");
 			session.setAttribute(Member.USER, member);
-			return "redirect:/main";
+			return "redirect:/modalTest";
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class MemberController {
 		if( memberService.registNormalMember(memberVO) ) {
 			return "redirect:/main";
 		}
-		return "redirect:/main";
+		return "redirect:/modalTest";
 	}
 	
 	@RequestMapping("/api/isExist/userId")
@@ -169,7 +169,7 @@ public class MemberController {
 	@RequestMapping("/logout")
 	public String doLogout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/main";
+		return "redirect:/modalTest";
 	}
 
 }

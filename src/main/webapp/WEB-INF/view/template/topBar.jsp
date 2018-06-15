@@ -11,13 +11,37 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta charset="UTF-8">
-<link rel="stylesheet" href="static/loginRegist/css/loginRegist.css">
+<link rel="stylesheet" href="/SoloMong/static/main/css/linearicons.css">	
+<link rel="stylesheet" href="/SoloMong/static/main/css/font-awesome.min.css">
+<link rel="stylesheet" href="/SoloMong/static/main/css/bootstrap.css">
+<link rel="stylesheet" href="/SoloMong/static/main/css/magnific-popup.css">
+<link rel="stylesheet" href="/SoloMong/static/main/css/nice-select.css">					
+<link rel="stylesheet" href="/SoloMong/static/main/css/animate.min.css">
+<link rel="stylesheet" href="/SoloMong/static/main/css/owl.carousel.css">
+<link rel="stylesheet" href="/SoloMong/static/main/css/main.css">
+<link rel="stylesheet" href="/SoloMong/static/loginRegist/css/loginRegist.css">
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<link rel="stylesheet" href="/SoloMong/static/loginRegist/css/loginRegist.css">
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="720597646651-v2s49mjj7lrqjdf3f89k2fvlmdgam02h.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="<c:url value="/static/js/jquery.session.js"/>" ></script>
+<script src="/SoloMong/static/js/vendor/bootstrap.min.js"></script>			
+<script src="/SoloMong/static/js/easing.min.js"></script>			
+<script src="/SoloMong/static/js/hoverIntent.js"></script>
+<script src="/SoloMong/static/js/superfish.min.js"></script>	
+<script src="/SoloMong/static/js/jquery.ajaxchimp.min.js"></script>
+<script src="/SoloMong/static/js/jquery.magnific-popup.min.js"></script>	
+<script src="/SoloMong/static/js/owl.carousel.min.js"></script>			
+<script src="/SoloMong/static/js/jquery.sticky.js"></script>
+<script src="/SoloMong/static/js/jquery.nice-select.min.js"></script>			
+<script src="/SoloMong/static/js/parallax.min.js"></script>	
+<script src="/SoloMong/static/js/mail-script.js"></script>	
+<script src="/SoloMong/static/js/main.js"></script>	
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 <script type="text/javascript">
 $().ready( function() {
 	var $form_modal = $('.user-modal'), 
@@ -337,7 +361,7 @@ $().ready( function() {
 	                	if(isSuccess == "success"){
 	                		console.log("here we are");
 	                		$form_modal.removeClass('is-visible');
-	                	$(location).attr('href', "<c:url value='/main'/>");
+	                	$(location).attr('href', "<c:url value='/modalTest'/>");
 	                	}
 	                });
 	              },
@@ -371,24 +395,6 @@ $().ready( function() {
 	 	}); 
 /* end Kakao Login */
 
- /* 
-	start Google Login
- */
- function onSignIn(googleUser) {
-	 console.log("this call");
-     // Useful data for your client-side scripts:
-     var profile = googleUser.getBasicProfile();
-     console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-     console.log('Full Name: ' + profile.getName());
-     console.log('Given Name: ' + profile.getGivenName());
-     console.log('Family Name: ' + profile.getFamilyName());
-     console.log("Image URL: " + profile.getImageUrl());
-     console.log("Email: " + profile.getEmail());
-
-     // The ID token you need to pass to your backend:
-     var id_token = googleUser.getAuthResponse().id_token;
-     console.log("ID Token: " + id_token);
-   };
     
 });
 
@@ -398,7 +404,7 @@ $().ready( function() {
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="/SoloMong/main"><img src="static/main/img/solo.PNG" alt="솔로몽 로고" /></a>
+				<a href="/SoloMong/modalTest"><img src="/SoloMong/static/main/img/solo.PNG" alt="솔로몽 로고" /></a>
 			</div>
 			<div style="left:0;">
 				<c:if test="${not empty sessionScope.SOLO_LOCATION}">
@@ -408,17 +414,17 @@ $().ready( function() {
 			</div>
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="/">홈</a></li>
-					<li><a href="<c:url value="/recipe"/>">레시피</a></li>
-					<li><a href="#chefs">커뮤니티</a></li>
+					<li class="menu-active"><a href="/SoloMong/modalTest">홈</a></li>
+					<li><a href="<c:url value="myrecipe/write"/>">레시피</a></li>
+					<li><a href="/SoloMong/community/list">커뮤니티</a></li>
 					<c:if test = "${empty sessionScope.__USER__}">
 						<li><a id="loginTag" href="#">로그인/회원가입</a></li>
 					</c:if>
 					<c:if test = "${not empty sessionScope.__USER__}">
 						<li class="menu-has-children"><a href="#">회원정보</a>
 							<ul>
-								<li><a href="#">냉장고</a></li>
-								<li><a href="#">마이페이지</a></li>
+								<li><a href="refrigerator">냉장고</a></li>
+								<li><a href="myrecipe/write">마이페이지</a></li>
 								<li><a id="logout" href="#">로그아웃</a></li>
 							</ul>
 						</li>
@@ -462,7 +468,6 @@ $().ready( function() {
 						<img id="kakao-login-btn" class="full-width" alt="kakao-login-btn" src="<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow.png"/>"
 						 onmouseover="this.src='<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow_ov.png"/>'"
 						 onmouseout="this.src='<c:url value="/static/image/button-image/kakao_account_login_btn_medium_narrow.png"/>'">
-						 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 					</p>
 				</form>
 

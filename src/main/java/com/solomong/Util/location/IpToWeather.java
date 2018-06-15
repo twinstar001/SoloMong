@@ -1,4 +1,4 @@
-package com.solomong.util.location;
+package com.solomong.Util.location;
 
 import java.io.IOException;
 
