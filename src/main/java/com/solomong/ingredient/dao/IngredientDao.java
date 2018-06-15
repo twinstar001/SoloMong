@@ -6,7 +6,7 @@ import com.solomong.ingredient.vo.IngredientVO;
 
 
 public interface IngredientDao {
-	public List<IngredientVO> selectIngredientNameByType(String type);
+	public List<String> selectIngredientNameByType(String type);
 	public List<IngredientVO> selectIngredientNameAll();
 	public int selectIngredientName(String name);
 	public int selectIngredientUsebyPeriod(int name);

@@ -5,10 +5,10 @@
   
 <mapper namespace="IngredientDao">
 
-	<select id="selectIngredientNameByType" parameterType="string" resultType="IngredientVO">
+	<select id="selectIngredientNameByType" parameterType="string" resultType="String">
  		SELECT	INGREDIENT_NAME ingredientName
  		FROM	INGREDIENT
- 		WHERE	INGREDIETN_TYPE = #{ingredientType}
+ 		WHERE	INGREDIENT_TYPE = #{ingredientType}
  	</select>
  	
  	<select id="selectIngredientNameAll" resultType="IngredientVO">

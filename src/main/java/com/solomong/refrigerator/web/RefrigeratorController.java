@@ -65,6 +65,15 @@ public class RefrigeratorController {
 		return response;
 	}
 	
+	@RequestMapping("/api/get/ingredients")
+	@ResponseBody
+	public List<String> apiGetIngredientName(@RequestParam String type){
+		//boolean isExist = ingredientService.isExistIngredient(name);
+		
+		List<String> ingredients = ingredientService.readIngredientNameByType(type);
+		
+		return ingredients;
+	}
 	
 	
 	@RequestMapping("/refrigerator/write")

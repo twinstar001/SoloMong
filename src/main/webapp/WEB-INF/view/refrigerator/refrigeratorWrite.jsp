@@ -12,6 +12,27 @@
 <script type="text/javascript">
 
 	$().ready(function(){
+		
+		function appendIng(ing){
+			$("#ingredients").append("<option value="+ing+">")
+		}
+		
+		$("#ingredientType").change(function(){
+			var ingType = $("#ingredientType").val();
+			if(ingType != ""){
+				$.post("<c:url value="/api/get/ingredients"/>",{
+					type:ingType
+				},function(ingredients){
+					console.log(ingredients);
+					$("#ingredients").children("option").remove();
+					<c:forEach items="ingredients" var="ing">
+						appendIng(${ing});
+					</c:forEach>
+				});
+			}
+		});
+		
+		
 		$("#refrigeratorBtn").click(function(){
 			var value = $("#ingredient").val();		
 			if(value != ""){
@@ -65,10 +86,6 @@
 			<label for="default">재료를 선택해 주세요</label>
 		 	<input id="ingredient" list="ingredients" name="ingredientName" placeholder="ex)감자">
 			<datalist id="ingredients">
-				<c:forEach items="${ingredients}" var="ing">
-					<option value="${ing.ingredientName}">
-				</c:forEach>
-		    	
 		 	</datalist>
 		</div>
 		<div>
