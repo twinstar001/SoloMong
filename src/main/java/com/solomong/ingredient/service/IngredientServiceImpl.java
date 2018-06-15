@@ -14,7 +14,7 @@ public class IngredientServiceImpl implements IngredientService{
 	}
 	
 	@Override
-	public List<IngredientVO> readIngredientNameByType(String type) {
+	public List<String> readIngredientNameByType(String type) {
 		return ingredientDao.selectIngredientNameByType(type);
 	}
 

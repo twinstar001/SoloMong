@@ -22,6 +22,6 @@
 		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
 		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
 		<mapper resource="com/solomong/myrecipe/dao/sql/myrecipeDao.xml"/>
-	</typeAliases>
+	</mappers>
 
 </configuration>

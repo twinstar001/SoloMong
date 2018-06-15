@@ -10,7 +10,7 @@ public class IngredientDaoImpl extends SqlSessionDaoSupport implements Ingredien
 
 
 	@Override
-	public List<IngredientVO> selectIngredientNameByType(String type) {
+	public List<String> selectIngredientNameByType(String type) {
 		return getSqlSession().selectList("IngredientDao.selectIngredientNameByType", type);
 	}
 

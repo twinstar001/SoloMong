@@ -7,7 +7,7 @@ import com.solomong.ingredient.vo.IngredientVO;
 
 public interface IngredientService {
 	
-	public List<IngredientVO> readIngredientNameByType(String type);
+	public List<String> readIngredientNameByType(String type);
 	public boolean isExistIngredient(String name);
 	public List<IngredientVO> readIngredientNameAll();
 	public int readIngredientUsebyPeriod(int name);
