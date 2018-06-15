@@ -6,16 +6,23 @@
 <configuration>
 
 	<typeAliases>
+		<typeAlias type="com.solomong.ingredient.vo.IngredientVO" alias="IngredientVO"/>
+		<typeAlias type="com.solomong.refrigerator.vo.RefrigeratorVO" alias="RefrigeratorVO"/>
 		<typeAlias type="com.solomong.member.vo.KakaoMemberVO" alias="KakaoMemberVO"/>
 		<typeAlias type="com.solomong.member.vo.GoogleMemberVO" alias="GoogleMemberVO"/>
 		<typeAlias type="com.solomong.member.vo.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
+		<typeAlias type="com.solomong.history.vo.HistoryVO" alias="HistoryVO"/>
 		<typeAlias type="com.solomong.myrecipe.vo.MyrecipeVO" alias="MyrecipeVO"/>
 	</typeAliases>
-	
+
 	<mappers>
+		<mapper resource="com/solomong/ingredient/dao/sql/ingredientDao.xml"/>
+		<mapper resource="com/solomong/refrigerator/dao/sql/refrigeratorDao.xml"/>
+		<mapper resource="com/solomong/recipe/dao/sql/ingredient.xml"/>
 		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
 		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
+		<mapper resource="com/solomong/history/dao/sql/HistoryDao.xml"/>
 		<mapper resource="com/solomong/myrecipe/dao/sql/myrecipeDao.xml"/>
 	</mappers>
 

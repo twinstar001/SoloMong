@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="IngredientDao">
+
+	<select id="selectIngredientNameByType" parameterType="string" resultType="String">
+ 		SELECT	INGREDIENT_NAME ingredientName
+ 		FROM	INGREDIENT
+ 		WHERE	INGREDIENT_TYPE = #{ingredientType}
+ 	</select>
+ 	
+ 	<select id="selectIngredientNameAll" resultType="IngredientVO">
+ 		SELECT	INGREDIENT_NAME ingredientName
+ 				, INGREDIENT_ID	ingredientId
+ 		FROM	INGREDIENT
+ 	</select>
+ 	
+ 	<select	id="selectIngredientName" parameterType="string" resultType="_int">
+ 		SELECT	INGREDIENT_ID ingredientId
+ 		FROM	INGREDIENT
+ 		WHERE	INGREDIENT_NAME = #{ingredientName}
+ 	</select>
+ 	
+ 	<select	id="selectIngredientUsebyPeriod" parameterType="int" resultType="_int">
+ 		SELECT	INGREDIENT_USEBY_PERIOD ingredientUsebyPeriod
+ 		FROM	INGREDIENT
+ 		WHERE	INGREDIENT_ID = #{ingredientId}
+ 	</select>
+
+</mapper>

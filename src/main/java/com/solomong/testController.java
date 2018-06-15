@@ -7,13 +7,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.solomong.history.service.HistoryService;
 import com.solomong.member.constants.Member;
 import com.solomong.member.vo.MemberVO;
 
 @Controller
 public class testController {
+	private HistoryService historyService;
 	
-	@RequestMapping("/main")
+	public void setHistoryService(HistoryService historyService) {
+		this.historyService = historyService;
+	}
+	
+	@RequestMapping("/main")		
 	public String viewTest(HttpSession session) {
 		MemberVO member = (MemberVO) session.getAttribute(Member.USER);
 		if(member != null) {
@@ -22,6 +28,13 @@ public class testController {
 		return "main";
 	}
 	/*
+	
+	@RequestMapping("/main2")
+	public String viewTest2(HttpSession session) {
+		session.invalidate();
+		return "template/topBar";
+	}
+	
 	@RequestMapping("/modalTest")
 	public String modalTest() {
 		return "mainModal";

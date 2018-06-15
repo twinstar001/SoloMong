@@ -5,6 +5,48 @@
  
  <mapper namespace="RefrigeratorDao">
  
+ 
+ 	<insert id="insertRefrigerator" parameterType="RefrigeratorVO">
+ 	
+ 		INSERT	INTO	REFRIGERATOR (
+  			REFRIGERATOR_ID
+  			, REFRIGERATOR_REGIST_DATE
+  			, REFRIGERATOR_USEBY_DATE
+  			, REFRIGERATOR_EXPIRATION_DATE
+  			, MEMBER_ID
+  			, INGREDIENT_ID
+  			, INGREDIENT_NAME
+  		)
+  		VALUES (
+  			REFRIGERATOR_ID_SEQ.NEXTVAL
+  			, SYSDATE
+  			, TO_DATE(#{refrigeratorUseByDate},'yyyy-mm-dd')
+  			, TO_DATE(#{refrigeratorExpirationDate},'yyyy-mm-dd')
+  			, #{memberId}
+  			, #{ingredientId}
+  			, #{ingredientName}
+  			
+  		)
+ 	</insert>
+ 	
+ 	<select id="selectRefrigeratorAll" parameterType="int" resultType="RefrigeratorVO">
+ 		SELECT	REFRIGERATOR_ID refrigeratorId
+  				, TO_CHAR(REFRIGERATOR_REGIST_DATE, 'yyyy-mm-dd') refrigeratorRegistDate
+  				, TO_CHAR(REFRIGERATOR_USEBY_DATE, 'yyyy-mm-dd') refrigeratorUseByDate
+  				, TO_CHAR(REFRIGERATOR_EXPIRATION_DATE, 'yyyy-mm-dd') refrigeratorExpirationDate
+  				, MEMBER_ID memberId
+  				, INGREDIENT_ID ingredientId
+  				, INGREDIENT_NAME ingredientName
+ 		FROM	REFRIGERATOR
+ 		WHERE	MEMBER_ID = #{memberId}
+ 	</select>
+ 	
+ 	<delete id="deleteRefrigerator" parameterType="int">
+ 		DELETE	
+ 		FROM	REFRIGERATOR
+ 		WHERE	REFRIGERATOR_ID = #{refrigeratorId}
+ 	</delete>
+ 	
  	
  
  </mapper>

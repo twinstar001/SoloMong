@@ -11,6 +11,21 @@ public class MemberServiceImpl implements MemberService{
 	public void setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
+	
+	@Override
+	public boolean isExistUserId(String userId) {
+		return memberDao.countExistUserId(userId) > 0;
+	}
+
+	@Override
+	public boolean isExistNickname(String nickname) {
+		return memberDao.countExistNickname(nickname) > 0;
+	}
+	
+	@Override
+	public boolean registNormalMember(MemberVO memberVO) {
+		return memberDao.insertNormalMember(memberVO) > 0;
+	}
 
 	@Override
 	public boolean registKakaoMember(KakaoMemberVO kakaoMemberVO) {
@@ -26,5 +41,6 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO readMember(MemberVO memberVO) {
 		return memberDao.selectMember(memberVO);
 	}
+
 
 }

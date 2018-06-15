@@ -19,6 +19,36 @@
 		AND		MEMBER.ID_TYPE = #{idType}
 		
 	</select>
+	
+	<select id="countExistUserId" parameterType="string" resultType="_int">
+		SELECT	COUNT(MEMBER_ID)
+		FROM	MEMBER
+		WHERE	USER_ID = #{userId}
+	</select>
+	
+	<select id="countExistNickname" parameterType="string" resultType="_int">
+		SELECT	COUNT(MEMBER_ID)
+		FROM	MEMBER
+		WHERE	NICKNAME = #{nickname}
+	</select>
+	
+	<insert id="insertNormalMember" parameterType="MemberVO">
+		INSERT	INTO
+		MEMBER	(
+				MEMBER_ID
+				, ID_TYPE
+				, USER_ID
+				, NICKNAME
+				, EMAIL
+		)
+		VALUES	(
+				MEMBER_ID_SEQ.NEXTVAL
+				, 1
+				, #{userId}
+				, #{nickname}
+				, #{email}
+		)
+	</insert>
 
 	<insert id="insertKakaoMember" parameterType="KakaoMemberVO">
 		INSERT	INTO
