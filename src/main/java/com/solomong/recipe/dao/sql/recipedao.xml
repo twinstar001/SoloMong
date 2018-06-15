@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="RecipeDao">
+
+	<resultMap type="RecipeVO" id="RecipeVOMap">
+		<id column="A_RECIPE_ID" property="id" />
+		<result column="A_TITLE" property="title" />
+		<result column="A_USER_ID" property="userId" />
+		<result column="A_RECOMMEND_COUNT" property="recommendCount" />
+		<result column="A_VIEW_COUNT" property="viewCount" />
+		<result column="A_WRITE_DATE" property="writeDate" />
+		<result column="A_FOOD_LEVEL" property="level" />
+		<result column="A_FOOD_TIME" property="time" />
+		<result column="A_PEOPLE" property="people" />
+		<result column="A_YOUTUBE" property="youtubeLink" />
+		<collection property="body" ofType="java.lang.String" javaType="list" >  
+            <result column="B_BODY" />  
+        </collection>
+        <collection property="bodyImg" ofType="java.lang.String" javaType="list">  
+            <result column="B_BODY_IMG" />  
+        </collection>
+	</resultMap> 
+
+	<select id="selectOneRecipe1" parameterType="_int" resultMap="RecipeVOMap">
+		SELECT  A.RECIPE_ID A_RECIPE_ID
+		        , A.TITLE A_TITLE
+		        , A.USER_ID A_USER_ID
+		        , A.RECOMMEND_COUNT A_RECOMMEND_COUNT
+		        , A.VIEW_COUNT A_VIEW_COUNT
+		        , A.WRITE_DATE A_WRITE_DATE
+		        , A.FOOD_LEVEL A_FOOD_LEVEL
+		        , A.FOOD_TIME A_FOOD_TIME
+		        , A.PEOPLE A_PEOPLE
+		        , A.YOUTUBE A_YOUTUBE
+		        , B.RECIPE_ATTACH_ID B_RECIPE_ATTACH_ID
+		        , B.RECIPE_ID B_RECIPE_ID
+		        , B.BODY B_BODY
+		        , B.BODY_IMG B_BODY_IMG
+		        , B.FILE_TYPE B_FILE_TYPE
+		FROM	RECIPE A, RECIPE_ATTACH B
+		WHERE	A.RECIPE_ID = B.RECIPE_ID
+				AND	A.RECIPE_ID = #{id}
+				AND B.FILE_TYPE='D'
+		ORDER 	BY B.RECIPE_ATTACH_ID ASC
+	</select>
+	
+	<select id="selectOneRecipe2" parameterType="_int" resultType="string" >
+		SELECT  BODY_IMG bodyImg
+		FROM	RECIPE_ATTACH
+		WHERE	RECIPE_ID = #{id}
+				AND FILE_TYPE='S'
+		ORDER 	BY RECIPE_ATTACH_ID ASC
+	</select>
+	
+	<select id="selectAllRecipe" resultMap="RecipeVOMap">
+		SELECT  A.RECIPE_ID A_RECIPE_ID
+		        , A.TITLE A_TITLE
+		        , A.USER_ID A_USER_ID
+		        , A.RECOMMEND_COUNT A_RECOMMEND_COUNT
+		        , A.VIEW_COUNT A_VIEW_COUNT
+		        , A.WRITE_DATE A_WRITE_DATE
+		        , A.FOOD_LEVEL A_FOOD_LEVEL
+		        , A.FOOD_TIME A_FOOD_TIME
+		        , A.PEOPLE A_PEOPLE
+		        , A.YOUTUBE A_YOUTUBE
+		        , B.RECIPE_ATTACH_ID B_RECIPE_ATTACH_ID
+		        , B.RECIPE_ID B_RECIPE_ID
+		        , B.BODY B_BODY
+		        , B.BODY_IMG B_BODY_IMG
+		        , B.FILE_TYPE B_FILE_TYPE
+		FROM	RECIPE A, RECIPE_ATTACH B
+		WHERE	A.RECIPE_ID = B.RECIPE_ID
+		ORDER 	BY B.RECIPE_ATTACH_ID ASC
+	</select>
+
+</mapper>   
