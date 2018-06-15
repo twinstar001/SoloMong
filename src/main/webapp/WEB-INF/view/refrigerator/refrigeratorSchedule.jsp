@@ -19,6 +19,8 @@
 	$().ready(function(){
 		
 		$('#calendar').fullCalendar({
+			
+			height: 750,
 
 			events: [
 				
@@ -44,6 +46,8 @@
 		
 		});
 		
+				
+		
 		$("#add").click(function(){
 			window.open("<c:url value="/refrigerator/write"/>"
 	    			  , "재료 추가"
@@ -51,6 +55,7 @@
 		});
 	
 	});
+	
 	function sendForm(name, date){
 		
 		location.href = "/SoloMong/refrigerator/writing/"+name+"/"+date;
@@ -59,7 +64,7 @@
 </head>
 <body>
 
-	<div id="calendar"></div>
+	<div id="calendar" style="width: 80%;"></div>
 	<div id="add">추가하기</div>
 
 </body>
