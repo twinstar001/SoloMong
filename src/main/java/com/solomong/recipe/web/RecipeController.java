@@ -1,15 +1,20 @@
 package com.solomong.recipe.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.solomong.recipe.service.RecipeService;
+import com.solomong.recipe.vo.RecipeVO;
 
 @Controller
 public class RecipeController {
@@ -21,33 +26,39 @@ public class RecipeController {
 	}
 	
 	
-	@RequestMapping("/recipe")
-	public void test() {
+	@RequestMapping("/recipe/{id}")
+	public ModelAndView viewRecipeDetail(@PathVariable int id) {
 	
-		try {
-		    // 1. URL ?Ñ†?ñ∏
-		    String connUrl = "http://emart.ssg.com/recipe/recipe/detail.ssg?recipeId=1";
-		    // 2. HTML Í∞??†∏?ò§Í∏?
-		    Document doc = Jsoup.connect(connUrl).get();
-		    // 3. Í∞??†∏?ò® HTML Document Î•? ?ôï?ù∏?ïòÍ∏?
-		    //System.out.println(doc.toString());
-		    //System.out.println(doc.select(".post_subject").first());
-		    //System.out.println(doc.select(".txt_info"));
-		    //Elements infos = doc.select(".txt_info");
-		   // for(Element info : infos) {
-		   // 	System.out.println(info.text());
-		    //}
-		    
-		    Elements ings = doc.select(".btn_hash");
-		    for(Element ing : ings) {
-		    	System.out.println(ing.text());
-		    	recipeService.putIngredient(ing.text());
-		    }
-		} catch (IOException e) {
-		    // Exp : Connection Fail
-		    e.printStackTrace();
-		}
+		ModelAndView view = new ModelAndView();
+		
+		RecipeVO recipeVO = recipeService.readOneRecipe(id);
+		
+		view.addObject("recipe", recipeVO);
+		view.setViewName("recipe/detail");
+		
+		return view;
 
 	}
+	
+	@RequestMapping("/recipeList")
+	public ModelAndView viewRecipeList() {
+	
+		ModelAndView view = new ModelAndView();
+		
+		List<RecipeVO> recipeList = recipeService.realAllRecipe();
+		
+		for(int i=0; i < recipeList.size(); i++) {
+			int id = recipeList.get(i).getId();
+			List<String> slideImg = recipeService.readSlideImg(id);
+			recipeList.get(i).setSlideImg(slideImg);			
+		}
+		
+		view.addObject("recipeList", recipeList);
+		view.setViewName("recipe/list");
+		
+		return view;
+
+	}
+	
 	
 }

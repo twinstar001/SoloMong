@@ -6,6 +6,7 @@ import java.util.List;
 import org.jsoup.nodes.Element;
 
 public class RecipeVO {
+	
 	private int id;
 	private String title;
 	private List<String> body;

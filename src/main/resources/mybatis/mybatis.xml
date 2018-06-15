@@ -14,12 +14,15 @@
 		<typeAlias type="com.solomong.community.vo.CommunityVO" alias="CommunityVO"/>
 		<typeAlias type="com.solomong.history.vo.HistoryVO" alias="HistoryVO"/>
 		<typeAlias type="com.solomong.myrecipe.vo.MyrecipeVO" alias="MyrecipeVO"/>
+		<typeAlias type="com.solomong.recipe.vo.RecipeVO" alias="RecipeVO"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="com/solomong/ingredient/dao/sql/ingredientDao.xml"/>
 		<mapper resource="com/solomong/refrigerator/dao/sql/refrigeratorDao.xml"/>
-		<mapper resource="com/solomong/recipe/dao/sql/ingredient.xml"/>
+
+		<mapper resource="com/solomong/recipe/dao/sql/recipedao.xml"/>
+
 		<mapper resource="com/solomong/member/dao/sql/memberDao.xml"/>
 		<mapper resource="com/solomong/community/dao/sql/communityDao.xml"/>
 		<mapper resource="com/solomong/history/dao/sql/HistoryDao.xml"/>

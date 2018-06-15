@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,13 +15,13 @@
 }
 .recipe-image{  
 	width:310px;
-	height:230px;
+	height:310px;
 	margin: 5px;
 	background-color:#222241;
 }
 .recipe-title{
 	width:310px;
-	height:70px;
+	height:50px;
 	margin: 5px;
 	background-color:#3e3e92;
 }
@@ -32,6 +33,12 @@
 	margin: 5px;
 	vertical-align:top;
 }
+
+img{
+	width: 310px;
+	height: 310px;
+}
+
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -62,61 +69,17 @@
 			 --><div class="div2">닭</div>
 		</div>
 		<div>
-			<div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div> 
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div>
+			<c:forEach items="${recipeList}" var="list">
+				<div class="div1">
+					<div class="recipe-image">
+						<a href="<c:url value="/recipe/${list.id}" />" >
+					${list.slideImg.get(0)}</a>
+					</div>
+					<div class="recipe-title">${list.title}</div>
+				</div>
+			</c:forEach>
 		</div>
-		<div>
-			<div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div>
-		</div>
-		<div>
-			<div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div>
-		</div>
-		<div>
-			<div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div><!-- 
-			 --><div class="div1">
-				<div class="recipe-image"></div>
-				<div class="recipe-title"></div>
-			</div>
-		</div>
+		
 		
 	</div>
 <footer class="footer-area section-gap"style="width:1100px; margin-left:100px; 	">
