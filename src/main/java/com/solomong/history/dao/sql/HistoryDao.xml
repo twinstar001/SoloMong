@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HistoryDao">
+	<insert id="insertHistory" parameterType="HistoryVO">
+		INSERT	INTO	HIST(
+			HIST_ID
+			,HIST_DATE
+			,REQ_TYPE
+			,IP
+			,USER_ID
+			,USER_TYPE
+			,LOG
+			,WEATHER
+			,AS_IS
+			,TO_BE
+			,REFERER
+		)
+		VALUES(
+			HIST_ID_SEQ.NEXTVAL
+			,SYSDATE
+			,#{reqType}
+			,#{ip}
+			,#{userId}
+			,#{idType}
+			,#{log}
+			,#{weather}
+			,#{asIs}
+			,#{toBe}
+			,#{referer}
+		)
+	</insert>
+	
+</mapper>
