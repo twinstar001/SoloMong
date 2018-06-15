@@ -235,11 +235,17 @@ body {
 .form input.has-error {
   border: 1px solid #d76666;
 }
+.form input.invalidUnique {
+	background-color: #ff655f;
+}
+.form input.invalidPassword {
+	background-color: #ff655f;
+}
 .form input[type=password] {
   /* space left for the HIDE button */
   padding-right: 65px;
 }
-.form input[type=submit] {
+.form input[type=button] {
   padding: 16px 0;
   cursor: pointer;
   background: #F64747;
@@ -256,10 +262,10 @@ body {
   	-ms-transition: all 0.30s ease-in-out;
   	-o-transition: all 0.30s ease-in-out;
 }
-.form input[type=submit]:hover {
+.form input[type=button]:hover {
 	background: #d83d3d;
 }
-.no-touch .form input[type=submit]:hover, .no-touch .form input[type=submit]:focus {
+.no-touch .form input[type=button]:hover, .no-touch .form input[type=button]:focus {
   background: #d83d3d;
   outline: none;
 }
@@ -337,7 +343,7 @@ body {
   .form input.has-padding {
     padding: 16px 20px 16px 50px;
   }
-  .form input[type=submit] {
+  .form input[type=button] {
     padding: 16px 0;
   }
 }
